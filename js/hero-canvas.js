@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
       this.vy = (Math.random() - 0.5) * 0.35;
       this.radius = Math.random() * 1.8 + 1;
       this.alpha = Math.random() * 0.4 + 0.15;
-      this.color = Math.random() > 0.35 ? '#0F172A' : '#C59B27';
+      this.color = Math.random() > 0.35 ? '#0F172A' : '#64748B';
     }
 
     update() {

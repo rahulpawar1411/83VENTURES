@@ -17,10 +17,27 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=8.0">
 </head>
 
 <body>
+
+  <!-- Site Loading Screen -->
+  <div id="sitePreloader" class="site-preloader" aria-label="Loading Eighty Three Ventures">
+    <div class="preloader-content">
+      <div class="preloader-logo-wrap">
+        <img src="assets/83 logo (4).png" alt="83 Ventures Logo" class="preloader-logo">
+      </div>
+      <div class="preloader-title-wrap">
+        <span class="preloader-welcome">WELCOME TO</span>
+        <h2 class="preloader-brand">83VENTURES</h2>
+      </div>
+      <div class="preloader-line-track">
+        <div class="preloader-line-fill"></div>
+      </div>
+      <p class="preloader-tagline">Capitalized for Vision. Engineered for Scale.</p>
+    </div>
+  </div>
 
   <!-- Header Navigation -->
   <header class="header" id="mainHeader">
@@ -32,10 +49,9 @@
       <nav>
         <ul class="nav-menu" id="navMenu">
           <li><a href="#home" class="nav-link active" data-text="Home"><span>Home</span></a></li>
-          <li><a href="#about" class="nav-link" data-text="About Us"><span>About Us</span></a></li>
-          <li><a href="#leadership" class="nav-link" data-text="Leadership"><span>Leadership</span></a></li>
           <li><a href="#portfolio" class="nav-link" data-text="Businesses"><span>Businesses</span></a></li>
-          <li><a href="#media" class="nav-link" data-text="Media"><span>Media</span></a></li>
+          <li><a href="#leadership" class="nav-link" data-text="Leadership"><span>Leadership</span></a></li>
+          <li><a href="#about" class="nav-link" data-text="About Us"><span>About Us</span></a></li>
           <li><a href="#contact" class="nav-link" data-text="Contact"><span>Contact</span></a></li>
         </ul>
       </nav>
@@ -53,7 +69,9 @@
   <main>
     <!-- Hero Section (Full Width Edge-to-Edge Right Image) -->
     <section class="hero" id="home">
-      <div class="hero-top-right-note">Investing in Better Tomorrows</div>
+      <div class="hero-top-right-note" id="heroFollowerBadge" aria-hidden="true">
+        <span>Investing in Better Tomorrows</span>
+      </div>
 
       <!-- Edge-to-Edge Full Width Right Image -->
       <div class="hero-full-media-wrap">
@@ -82,7 +100,7 @@
       </div>
     </section>
 
-    <!-- 4 Strategic Pillars Bar (Corporate & Static) -->
+    <!-- 4 Strategic Pillars Bar (Serious Corporate & Strategic Focus) -->
     <section class="pillars-bar-section">
       <div class="container">
         <div class="pillars-bar-grid">
@@ -157,76 +175,103 @@
       </div>
     </section>
 
-    <!-- Portfolio Section (design2.png Split Layout) -->
+    <!-- Portfolio Section -->
     <section class="portfolio-section" id="portfolio">
       <div class="container">
-        <div class="portfolio-split-grid">
-          <!-- Left Column -->
-          <div>
+        <!-- Section Header -->
+        <div class="portfolio-header">
+          <div class="portfolio-header-content">
             <span class="section-tag-sm">OUR PORTFOLIO</span>
-            <h2 class="section-title">Businesses We Build & Back.</h2>
+            <h2 class="section-title">Businesses We Build &amp; Back.</h2>
             <p class="section-subtitle">We partner with businesses that challenge conventional models, solve meaningful
               problems and have the potential to create lasting value.</p>
-            <a href="#portfolio" class="btn btn-outline-dark">
-              <span class="btn-text" data-text="View All Businesses"><span>View All Businesses</span></span>
-            </a>
           </div>
+        </div>
 
-          <!-- Right 2 Cards -->
-          <div class="portfolio-cards-grid">
-            <!-- Card 1: ReeferON -->
-            <div class="portfolio-card-design2 theme-reeferon">
-              <div class="portfolio-card-media">
-                <img src="assets/reeferon.jpg" alt="ReeferON Cold Chain Logistics">
+        <!-- Portfolio Cards Grid -->
+        <div class="portfolio-cards-grid">
+          <!-- Card 1: ReeferON -->
+          <div class="portfolio-card-design2 theme-reeferon">
+            <div class="portfolio-card-media">
+              <img src="assets/reeferon.jpg" alt="ReeferON Cold Chain Logistics">
+            </div>
+            <div class="portfolio-card-body">
+              <div class="portfolio-card-header-wrap">
+                <img src="assets/reeferon_logo.png" alt="ReeferON"
+                  style="height: 38px; width: auto; object-fit: contain;">
               </div>
-              <div class="portfolio-card-body">
-                <div>
-                  <div style="margin-bottom: 8px;">
-                    <img src="assets/reeferon_logo.png" alt="ReeferON"
-                      style="height: 48px; width: auto; object-fit: contain;">
-                  </div>
-                  <div class="portfolio-card-subtitle" style="color: #0077B6;">Cold Chain • Supply Chain • Logistics Technology</div>
-                  <p class="portfolio-card-text">
-                    ReeferON is a technology-enabled cold-chain and supply-chain platform focused on improving
-                    operational visibility, accountability and efficiency across temperature-controlled logistics.
-                  </p>
-                  <a href="https://reeferon.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-reeferon" style="padding: 8px 18px; font-size: 0.84rem; margin-bottom: 20px;">
-                    <span class="btn-text" data-text="Explore ReeferON"><span>Explore ReeferON</span></span>
-                  </a>
-                </div>
-                <div class="portfolio-pills-row">
-                  <span class="pill-badge">Strategy</span>
-                  <span class="pill-badge">Technology</span>
-                  <span class="pill-badge">Operations</span>
-                  <span class="pill-badge">Growth</span>
-                </div>
+              <div class="portfolio-card-subtitle" style="color: #0077B6;">Cold Chain • Supply Chain • Logistics Technology</div>
+              <p class="portfolio-card-text">
+                ReeferON is a technology-enabled cold-chain and supply-chain platform focused on improving
+                operational visibility, accountability and efficiency across temperature-controlled logistics.
+              </p>
+              <div class="portfolio-card-btn-wrap">
+                <a href="https://reeferon.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-reeferon" style="padding: 7px 18px; font-size: 0.82rem;">
+                  <span class="btn-text" data-text="Explore ReeferON"><span>Explore ReeferON</span></span>
+                </a>
+              </div>
+              <div class="portfolio-pills-row">
+                <span class="pill-badge">Strategy</span>
+                <span class="pill-badge">Technology</span>
+                <span class="pill-badge">Operations</span>
+                <span class="pill-badge">Growth</span>
               </div>
             </div>
+          </div>
 
-            <!-- Card 2: Ten Food -->
-            <div class="portfolio-card-design2 theme-tenfoods">
-              <div class="portfolio-card-media">
-                <img src="assets/ten_foods.jpg" alt="Ten Food Staples">
+          <!-- Card 2: Ten Food -->
+          <div class="portfolio-card-design2 theme-tenfoods">
+            <div class="portfolio-card-media">
+              <img src="assets/ten_foods.jpg" alt="Ten Food Staples">
+            </div>
+            <div class="portfolio-card-body">
+              <div class="portfolio-card-header-wrap">
+                <h3 class="portfolio-card-title">Ten Food</h3>
               </div>
-              <div class="portfolio-card-body">
-                <div>
-                  <h3 class="portfolio-card-title">Ten Food</h3>
-                  <div class="portfolio-card-subtitle" style="color: #2D6A4F;">FoodTech • Consumer Staples • D2C</div>
-                  <p class="portfolio-card-text">
-                    Ten Food is building a modern approach to everyday staples by combining traditional food practices
-                    with improved sourcing, processing and distribution.
-                  </p>
-                  <a href="https://retail.economictimes.indiatimes.com/news/food-entertainment/grocery/10on10-foods-raises-rs-2-crore-pre-seed-to-rebuild-indias-staples-market-with-fresh-stone-ground-flours/129068571"
-                    target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-tenfoods" style="padding: 8px 18px; font-size: 0.84rem; margin-bottom: 20px;">
-                    <span class="btn-text" data-text="Explore Ten Food"><span>Explore Ten Food</span></span>
-                  </a>
-                </div>
-                <div class="portfolio-pills-row">
-                  <span class="pill-badge">Strategy</span>
-                  <span class="pill-badge">Supply Chain</span>
-                  <span class="pill-badge">Operations</span>
-                  <span class="pill-badge">Growth</span>
-                </div>
+              <div class="portfolio-card-subtitle" style="color: #2D6A4F;">FoodTech • Consumer Staples • D2C</div>
+              <p class="portfolio-card-text">
+                Ten Food is building a modern approach to everyday staples by combining traditional food practices
+                with improved sourcing, processing and distribution.
+              </p>
+              <div class="portfolio-card-btn-wrap">
+                <a href="https://retail.economictimes.indiatimes.com/news/food-entertainment/grocery/10on10-foods-raises-rs-2-crore-pre-seed-to-rebuild-indias-staples-market-with-fresh-stone-ground-flours/129068571"
+                  target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-tenfoods" style="padding: 7px 18px; font-size: 0.82rem;">
+                  <span class="btn-text" data-text="Explore Ten Food"><span>Explore Ten Food</span></span>
+                </a>
+              </div>
+              <div class="portfolio-pills-row">
+                <span class="pill-badge">Strategy</span>
+                <span class="pill-badge">Supply Chain</span>
+                <span class="pill-badge">Operations</span>
+                <span class="pill-badge">Growth</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: PAR 360 -->
+          <div class="portfolio-card-design2 theme-par360">
+            <div class="portfolio-card-media">
+              <img src="assets/par360.jpg" alt="PAR 360 Integrated Supply Chain">
+            </div>
+            <div class="portfolio-card-body">
+              <div class="portfolio-card-header-wrap">
+                <img src="assets/par360_logo.png" alt="PAR 360"
+                  style="height: 34px; width: auto; object-fit: contain;">
+              </div>
+              <div class="portfolio-card-subtitle" style="color: #2E3A50;">Integrated Supply Chain • Warehousing • Logistics Consulting</div>
+              <p class="portfolio-card-text">
+                PAR 360 provides comprehensive integrated supply chain solutions combining strategy, intelligent warehousing, contract logistics, and digital execution.
+              </p>
+              <div class="portfolio-card-btn-wrap">
+                <a href="https://par360.in" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark btn-par360" style="padding: 7px 18px; font-size: 0.82rem;">
+                  <span class="btn-text" data-text="Explore PAR 360"><span>Explore PAR 360</span></span>
+                </a>
+              </div>
+              <div class="portfolio-pills-row">
+                <span class="pill-badge">Strategy</span>
+                <span class="pill-badge">Logistics</span>
+                <span class="pill-badge">Warehousing</span>
+                <span class="pill-badge">Execution</span>
               </div>
             </div>
           </div>
@@ -239,7 +284,7 @@
       <div class="container">
         <div class="impact-grid">
           <div class="impact-title-col">
-            <span class="section-tag-sm" style="color: var(--gold-light); letter-spacing: 1.5px; font-weight: 700;">OUR
+            <span class="section-tag-sm" style="color: rgba(255, 255, 255, 0.8); letter-spacing: 1.5px; font-weight: 700;">OUR
               IMPACT</span>
             <h2 class="impact-title">Building Value<br>Across Sectors</h2>
           </div>
@@ -247,7 +292,7 @@
           <div class="impact-stats-grid">
             <div class="impact-stat-item">
               <div class="impact-stat-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.95)" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z" />
                   <path d="M6 12H4a2 2 0 0 0-2 2v8h4" />
@@ -263,7 +308,7 @@
 
             <div class="impact-stat-item">
               <div class="impact-stat-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.95)" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round">
                   <circle cx="12" cy="5" r="3" />
                   <circle cx="5" cy="18" r="3" />
@@ -278,7 +323,7 @@
 
             <div class="impact-stat-item">
               <div class="impact-stat-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.95)" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round">
                   <path d="m11 17 2 2a1 1 0 0 0 1.4 0l4.3-4.3a1 1 0 0 0 0-1.4L15 9.5a1 1 0 0 0-1.4 0L11 12" />
                   <path d="M14 8.5 10 4.5a1 1 0 0 0-1.4 0L4.3 8.8a1 1 0 0 0 0 1.4L9 14.5a1 1 0 0 0 1.4 0l1-1" />
@@ -291,7 +336,7 @@
 
             <div class="impact-stat-item">
               <div class="impact-stat-icon">
-                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="#D4AF37" stroke-width="1.8"
+                <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(255, 255, 255, 0.95)" stroke-width="1.8"
                   stroke-linecap="round" stroke-linejoin="round">
                   <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
                   <line x1="16" y1="2" x2="16" y2="6" />
@@ -329,25 +374,38 @@
           <div class="leadership-card">
             <div class="leadership-card-top">
               <div class="leadership-photo-wrap">
-                <img src="assets/prakash_ghagare.png" alt="Prakash Ghagare" class="leadership-card-img">
+                <img src="assets/prakash ghagare.png" alt="Prakash Ghagare" class="leadership-card-img">
               </div>
               <div class="leadership-info">
                 <div class="leadership-info-header">
                   <h3 class="leadership-name">Prakash Ghagare</h3>
-                  <a href="profile.html?id=prakash-ghagare" class="leadership-linkedin" title="LinkedIn Profile"
-                    target="_blank" rel="noopener noreferrer">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2">
-                      <path
-                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.6 1.6 0 1 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z" />
-                    </svg>
-                  </a>
                 </div>
                 <div class="leadership-role">Founder &amp; Director</div>
                 <p class="leadership-bio">Business leader &amp; supply chain strategist with 20+ years experience across
                   PAR 360, ReeferON, PropelPad, LEAP India, CHEP India (Former Country GM), and L&amp;T.</p>
-                <a href="profile.html?id=prakash-ghagare" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 10px;">
-                  <span class="btn-text" data-text="View Profile"><span>View Profile</span></span>
-                </a>
+                <div class="leadership-card-actions">
+                  <a href="profile.html?id=prakash-ghagare" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem;">
+                    <span class="btn-text" data-text="View Profile"><span>View Profile</span></span>
+                  </a>
+                  <div class="leadership-social-group">
+                    <a href="https://linkedin.com/in/prakashghagare" target="_blank" rel="noopener noreferrer" class="leadership-social-btn linkedin" title="LinkedIn Profile" aria-label="LinkedIn">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.6 1.6 0 1 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z"/>
+                      </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="leadership-social-btn twitter" title="Twitter / X" aria-label="Twitter / X">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                      </svg>
+                    </a>
+                    <a href="mailto:connect@83ventures.in" class="leadership-social-btn email" title="Direct Email" aria-label="Email">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -361,20 +419,33 @@
               <div class="leadership-info">
                 <div class="leadership-info-header">
                   <h3 class="leadership-name">Abhilash Raju Amula</h3>
-                  <a href="profile.html?id=abhilash-amula" class="leadership-linkedin" title="LinkedIn Profile"
-                    target="_blank" rel="noopener noreferrer">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="#0A66C2">
-                      <path
-                        d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.6 1.6 0 1 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z" />
-                    </svg>
-                  </a>
                 </div>
                 <div class="leadership-role">Founder &amp; CEO (ReeferON) • Co-Founder (PropelPad) • Director</div>
                 <p class="leadership-bio">Entrepreneur &amp; supply-chain leader with 20+ years experience across
                   ReeferON (Founder &amp; CEO), PropelPad, Radhakrishna Foodland, DHL, DP World, CHEP, and Reliance.</p>
-                <a href="profile.html?id=abhilash-amula" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 10px;">
-                  <span class="btn-text" data-text="View Profile"><span>View Profile</span></span>
-                </a>
+                <div class="leadership-card-actions">
+                  <a href="profile.html?id=abhilash-amula" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem;">
+                    <span class="btn-text" data-text="View Profile"><span>View Profile</span></span>
+                  </a>
+                  <div class="leadership-social-group">
+                    <a href="https://linkedin.com/in/abhilashamula" target="_blank" rel="noopener noreferrer" class="leadership-social-btn linkedin" title="LinkedIn Profile" aria-label="LinkedIn">
+                      <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.28 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.75M6.46 10.9v8.37H9.25V10.9H6.46M7.86 6.78a1.6 1.6 0 1 0 1.6 1.6 1.6 1.6 0 0 0-1.6-1.6Z"/>
+                      </svg>
+                    </a>
+                    <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" class="leadership-social-btn twitter" title="Twitter / X" aria-label="Twitter / X">
+                      <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                      </svg>
+                    </a>
+                    <a href="mailto:connect@83ventures.in" class="leadership-social-btn email" title="Direct Email" aria-label="Email">
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                        <polyline points="22,6 12,13 2,6"/>
+                      </svg>
+                    </a>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -382,7 +453,7 @@
       </div>
     </section>
 
-    <!-- Companies Our Team Has Worked With In The Past Section -->
+    <!-- Companies Our Team Has Worked With In The Past (Enterprise Heritage) -->
     <section class="past-companies-section" id="past-companies">
       <div class="container">
         <div class="past-companies-header">
@@ -395,356 +466,230 @@
 
         <div class="past-companies-marquee-wrap">
           <div class="past-companies-track">
-            <!-- ===== SET 1 (LOGOS ONLY) ===== -->
+            <!-- ===== SET 1 (REAL BRAND LOGOS) ===== -->
             <!-- 1. CHEP -->
             <div class="logo-marquee-item" title="CHEP">
-              <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="34" height="34" rx="7" fill="#005696"/>
-                <path d="M8 17h18M17 8v18M12 12l10 10M22 12L12 22" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-                <text x="42" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#005696" letter-spacing="1">CHEP</text>
-              </svg>
+              <img src="assets/Companies Logos/CHEP_(Brambles)_logo.svg.webp" alt="CHEP" class="company-logo-img">
             </div>
 
             <!-- 2. DHL -->
-            <div class="logo-marquee-item" title="DHL Supply Chain">
-              <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="110" height="34" rx="6" fill="#FFCC00"/>
-                <text x="55" y="25" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="900" font-style="italic" fill="#D40511" letter-spacing="2">DHL</text>
-              </svg>
+            <div class="logo-marquee-item" title="DHL">
+              <img src="assets/Companies Logos/dhl.jpg" alt="DHL" class="company-logo-img">
             </div>
 
-            <!-- 3. DP WORLD -->
-            <div class="logo-marquee-item" title="DP World">
-              <svg viewBox="0 0 145 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#0A1E40"/>
-                <path d="M11 17a6 6 0 0 1 12 0 6 6 0 0 1-12 0z" fill="#00A3E0"/>
-                <path d="M17 11a6 6 0 0 1 0 12" stroke="#FFFFFF" stroke-width="2"/>
-                <text x="40" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="900" fill="#0A1E40" letter-spacing="0.6">DP WORLD</text>
-              </svg>
+            <!-- 3. Reliance Retail -->
+            <div class="logo-marquee-item" title="Reliance Retail">
+              <img src="assets/Companies Logos/Reliance Retail.png" alt="Reliance Retail" class="company-logo-img">
             </div>
 
-            <!-- 4. LARSEN & TOUBRO -->
-            <div class="logo-marquee-item" title="Larsen &amp; Toubro">
-              <svg viewBox="0 0 135 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#0B2B4C"/>
-                <circle cx="17" cy="17" r="12" stroke="#C5A880" stroke-width="1.6"/>
-                <text x="17" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="900" fill="#FFFFFF">L&amp;T</text>
-                <text x="40" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#0B2B4C" letter-spacing="0.5">L&amp;T</text>
-              </svg>
+            <!-- 4. Johnson & Johnson -->
+            <div class="logo-marquee-item" title="Johnson &amp; Johnson">
+              <img src="assets/Companies Logos/johnson-johnson-logo.svg" alt="Johnson &amp; Johnson" class="company-logo-img">
             </div>
 
-            <!-- 5. RELIANCE -->
-            <div class="logo-marquee-item" title="Reliance">
-              <svg viewBox="0 0 145 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="30" height="30" y="2" rx="7" fill="#002D62"/>
-                <path d="M15 7l6 8-6 11-6-11 6-8z" fill="#D32F2F"/>
-                <circle cx="15" cy="15" r="3" fill="#FFEB3B"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="900" fill="#002D62" letter-spacing="0.8">RELIANCE</text>
-              </svg>
+            <!-- 5. Raymond -->
+            <div class="logo-marquee-item" title="Raymond">
+              <img src="assets/Companies Logos/raymond-logo.png" alt="Raymond" class="company-logo-img">
             </div>
 
-            <!-- 6. MAHANAGAR GAS -->
-            <div class="logo-marquee-item" title="Mahanagar Gas Limited">
-              <svg viewBox="0 0 155 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#E8F4EC"/>
-                <path d="M17 7c3.5 5 6 10 6 14a6 6 0 1 1-12 0c0-4 2.5-9 6-14z" fill="#00843D"/>
-                <path d="M17 14c1.5 2.5 3 4.5 3 6.5a3 3 0 1 1-6 0c0-2 1.5-4 3-6.5z" fill="#FFB81C"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#00843D" letter-spacing="0.5">MAHANAGAR GAS</text>
-              </svg>
-            </div>
-
-            <!-- 7. RADHAKRISHNA FOODLAND -->
-            <div class="logo-marquee-item" title="Radhakrishna Foodland">
-              <svg viewBox="0 0 155 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#006837"/>
-                <path d="M11 17c2-5 8-5 12 0-2 5-8 5-12 0z" fill="#FFFFFF"/>
-                <circle cx="17" cy="17" r="3" fill="#FBB03B"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="900" fill="#006837" letter-spacing="0.5">RK FOODLAND</text>
-              </svg>
-            </div>
-
-            <!-- 8. LEAP INDIA -->
-            <div class="logo-marquee-item" title="LEAP India">
-              <svg viewBox="0 0 140 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="30" height="30" y="2" rx="7" fill="#0B2545"/>
-                <path d="M9 21l6-8 6 8" stroke="#00C9A7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="900" fill="#0B2545" letter-spacing="0.8">LEAP INDIA</text>
-              </svg>
-            </div>
-
-            <!-- 9. RIVIGO -->
+            <!-- 6. Rivigo -->
             <div class="logo-marquee-item" title="Rivigo">
-              <svg viewBox="0 0 130 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#13293D"/>
-                <path d="M11 17l9-6v12l-9-6z" fill="#E63946"/>
-                <path d="M17 11l6 6-6 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="900" fill="#13293D" letter-spacing="0.8">RIVIGO</text>
-              </svg>
+              <img src="assets/Companies Logos/rivigo_logo.jpg" alt="Rivigo" class="company-logo-img">
             </div>
 
-            <!-- 10. DANISCO -->
-            <div class="logo-marquee-item" title="Danisco">
-              <svg viewBox="0 0 130 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#2B4162"/>
-                <circle cx="13" cy="17" r="4.5" fill="#38B000"/>
-                <circle cx="21" cy="17" r="4.5" fill="#70E000"/>
-                <path d="M13 17h8" stroke="#FFFFFF" stroke-width="1.8"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="900" fill="#2B4162" letter-spacing="0.8">DANISCO</text>
-              </svg>
+            <!-- 7. More Retail -->
+            <div class="logo-marquee-item" title="More Retail">
+              <img src="assets/Companies Logos/more.png" alt="More Retail" class="company-logo-img">
+            </div>
+
+            <!-- 8. Yum! Brands -->
+            <div class="logo-marquee-item" title="Yum! Brands">
+              <img src="assets/Companies Logos/yum.png" alt="Yum! Brands" class="company-logo-img">
+            </div>
+
+            <!-- 9. Partner Enterprise -->
+            <div class="logo-marquee-item" title="Enterprise Logistics">
+              <img src="assets/Companies Logos/download.png" alt="Enterprise Logistics" class="company-logo-img">
+            </div>
+
+            <!-- 10. Partner Supply Chain -->
+            <div class="logo-marquee-item" title="Partner Supply Chain">
+              <img src="assets/Companies Logos/download (1).png" alt="Partner Supply Chain" class="company-logo-img">
             </div>
 
             <!-- ===== SET 2 (DUPLICATE FOR SEAMLESS INFINITE LOOP) ===== -->
             <!-- 1. CHEP -->
             <div class="logo-marquee-item" title="CHEP" aria-hidden="true">
-              <svg viewBox="0 0 115 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="34" height="34" rx="7" fill="#005696"/>
-                <path d="M8 17h18M17 8v18M12 12l10 10M22 12L12 22" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round"/>
-                <text x="42" y="25" font-family="'Plus Jakarta Sans', sans-serif" font-size="22" font-weight="900" fill="#005696" letter-spacing="1">CHEP</text>
-              </svg>
+              <img src="assets/Companies Logos/CHEP_(Brambles)_logo.svg.webp" alt="CHEP" class="company-logo-img">
             </div>
 
             <!-- 2. DHL -->
-            <div class="logo-marquee-item" title="DHL Supply Chain" aria-hidden="true">
-              <svg viewBox="0 0 110 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="110" height="34" rx="6" fill="#FFCC00"/>
-                <text x="55" y="25" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="900" font-style="italic" fill="#D40511" letter-spacing="2">DHL</text>
-              </svg>
+            <div class="logo-marquee-item" title="DHL" aria-hidden="true">
+              <img src="assets/Companies Logos/dhl.jpg" alt="DHL" class="company-logo-img">
             </div>
 
-            <!-- 3. DP WORLD -->
-            <div class="logo-marquee-item" title="DP World" aria-hidden="true">
-              <svg viewBox="0 0 145 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#0A1E40"/>
-                <path d="M11 17a6 6 0 0 1 12 0 6 6 0 0 1-12 0z" fill="#00A3E0"/>
-                <path d="M17 11a6 6 0 0 1 0 12" stroke="#FFFFFF" stroke-width="2"/>
-                <text x="40" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="900" fill="#0A1E40" letter-spacing="0.6">DP WORLD</text>
-              </svg>
+            <!-- 3. Reliance Retail -->
+            <div class="logo-marquee-item" title="Reliance Retail" aria-hidden="true">
+              <img src="assets/Companies Logos/Reliance Retail.png" alt="Reliance Retail" class="company-logo-img">
             </div>
 
-            <!-- 4. LARSEN & TOUBRO -->
-            <div class="logo-marquee-item" title="Larsen &amp; Toubro" aria-hidden="true">
-              <svg viewBox="0 0 135 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#0B2B4C"/>
-                <circle cx="17" cy="17" r="12" stroke="#C5A880" stroke-width="1.6"/>
-                <text x="17" y="22" text-anchor="middle" font-family="'Plus Jakarta Sans', sans-serif" font-size="11" font-weight="900" fill="#FFFFFF">L&amp;T</text>
-                <text x="40" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="800" fill="#0B2B4C" letter-spacing="0.5">L&amp;T</text>
-              </svg>
+            <!-- 4. Johnson & Johnson -->
+            <div class="logo-marquee-item" title="Johnson &amp; Johnson" aria-hidden="true">
+              <img src="assets/Companies Logos/johnson-johnson-logo.svg" alt="Johnson &amp; Johnson" class="company-logo-img">
             </div>
 
-            <!-- 5. RELIANCE -->
-            <div class="logo-marquee-item" title="Reliance" aria-hidden="true">
-              <svg viewBox="0 0 145 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="30" height="30" y="2" rx="7" fill="#002D62"/>
-                <path d="M15 7l6 8-6 11-6-11 6-8z" fill="#D32F2F"/>
-                <circle cx="15" cy="15" r="3" fill="#FFEB3B"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="900" fill="#002D62" letter-spacing="0.8">RELIANCE</text>
-              </svg>
+            <!-- 5. Raymond -->
+            <div class="logo-marquee-item" title="Raymond" aria-hidden="true">
+              <img src="assets/Companies Logos/raymond-logo.png" alt="Raymond" class="company-logo-img">
             </div>
 
-            <!-- 6. MAHANAGAR GAS -->
-            <div class="logo-marquee-item" title="Mahanagar Gas Limited" aria-hidden="true">
-              <svg viewBox="0 0 155 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#E8F4EC"/>
-                <path d="M17 7c3.5 5 6 10 6 14a6 6 0 1 1-12 0c0-4 2.5-9 6-14z" fill="#00843D"/>
-                <path d="M17 14c1.5 2.5 3 4.5 3 6.5a3 3 0 1 1-6 0c0-2 1.5-4 3-6.5z" fill="#FFB81C"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="13" font-weight="900" fill="#00843D" letter-spacing="0.5">MAHANAGAR GAS</text>
-              </svg>
-            </div>
-
-            <!-- 7. RADHAKRISHNA FOODLAND -->
-            <div class="logo-marquee-item" title="Radhakrishna Foodland" aria-hidden="true">
-              <svg viewBox="0 0 155 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#006837"/>
-                <path d="M11 17c2-5 8-5 12 0-2 5-8 5-12 0z" fill="#FFFFFF"/>
-                <circle cx="17" cy="17" r="3" fill="#FBB03B"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="12" font-weight="900" fill="#006837" letter-spacing="0.5">RK FOODLAND</text>
-              </svg>
-            </div>
-
-            <!-- 8. LEAP INDIA -->
-            <div class="logo-marquee-item" title="LEAP India" aria-hidden="true">
-              <svg viewBox="0 0 140 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <rect width="30" height="30" y="2" rx="7" fill="#0B2545"/>
-                <path d="M9 21l6-8 6 8" stroke="#00C9A7" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="900" fill="#0B2545" letter-spacing="0.8">LEAP INDIA</text>
-              </svg>
-            </div>
-
-            <!-- 9. RIVIGO -->
+            <!-- 6. Rivigo -->
             <div class="logo-marquee-item" title="Rivigo" aria-hidden="true">
-              <svg viewBox="0 0 130 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#13293D"/>
-                <path d="M11 17l9-6v12l-9-6z" fill="#E63946"/>
-                <path d="M17 11l6 6-6 6" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="15" font-weight="900" fill="#13293D" letter-spacing="0.8">RIVIGO</text>
-              </svg>
+              <img src="assets/Companies Logos/rivigo_logo.jpg" alt="Rivigo" class="company-logo-img">
             </div>
 
-            <!-- 10. DANISCO -->
-            <div class="logo-marquee-item" title="Danisco" aria-hidden="true">
-              <svg viewBox="0 0 130 34" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="17" cy="17" r="15" fill="#2B4162"/>
-                <circle cx="13" cy="17" r="4.5" fill="#38B000"/>
-                <circle cx="21" cy="17" r="4.5" fill="#70E000"/>
-                <path d="M13 17h8" stroke="#FFFFFF" stroke-width="1.8"/>
-                <text x="38" y="23" font-family="'Plus Jakarta Sans', sans-serif" font-size="14" font-weight="900" fill="#2B4162" letter-spacing="0.8">DANISCO</text>
-              </svg>
+            <!-- 7. More Retail -->
+            <div class="logo-marquee-item" title="More Retail" aria-hidden="true">
+              <img src="assets/Companies Logos/more.png" alt="More Retail" class="company-logo-img">
+            </div>
+
+            <!-- 8. Yum! Brands -->
+            <div class="logo-marquee-item" title="Yum! Brands" aria-hidden="true">
+              <img src="assets/Companies Logos/yum.png" alt="Yum! Brands" class="company-logo-img">
+            </div>
+
+            <!-- 9. Partner Enterprise -->
+            <div class="logo-marquee-item" title="Enterprise Logistics" aria-hidden="true">
+              <img src="assets/Companies Logos/download.png" alt="Enterprise Logistics" class="company-logo-img">
+            </div>
+
+            <!-- 10. Partner Supply Chain -->
+            <div class="logo-marquee-item" title="Partner Supply Chain" aria-hidden="true">
+              <img src="assets/Companies Logos/download (1).png" alt="Partner Supply Chain" class="company-logo-img">
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Ecosystem Grid (design2.png Layout) -->
-    <section class="ecosystem-section" id="about">
+    <!-- About Us Section (Editorial Paragraph / Narrative Pattern) -->
+    <section class="about-section" id="about">
       <div class="container">
-        <div class="ecosystem-grid-design2">
-          <!-- Col 1: Note From Leadership -->
-          <div class="eco-card-white">
-            <div>
-              <div class="eco-img-header">
-                <img src="assets/laptop_desk.jpg" alt="Executive Laptop Desk View">
-              </div>
-              <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">A
-                Note From Our Leadership</h3>
-              <p
-                style="font-size: 0.95rem; font-style: italic; color: var(--text-muted); line-height: 1.6; margin-bottom: 16px;">
-                "We believe great businesses are created when strong ideas are supported by the right people, the right
-                strategy and disciplined execution."
-              </p>
-              <div style="font-weight: 700; font-size: 0.9rem;">Prakash Ghagare</div>
-              <div style="font-size: 0.8rem; color: var(--text-subtle); margin-bottom: 16px;">Founder & Director</div>
-            </div>
-            <a href="#about" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 16px;">
-              <span class="btn-text" data-text="Read Full Message"><span>Read Full Message</span></span>
-            </a>
+        <!-- Section Header -->
+        <div class="about-editorial-header">
+          <span class="section-tag-sm" style="font-weight: 700; letter-spacing: 1.5px; display: inline-block; margin-bottom: 12px;">ABOUT EIGHTY THREE</span>
+          <h2 class="section-title">Bridging Strategic Vision with Operational Mastery.</h2>
+        </div>
+
+        <!-- Editorial Paragraphs Grid -->
+        <div class="about-editorial-columns">
+          <div class="about-editorial-col-left">
+            <p class="about-lead-paragraph">
+              <strong>Eighty Three Ventures</strong> is an operator-led investment and venture-building platform. We architect, strengthen, and scale high-impact businesses across India’s rapidly modernizing supply chain, cold-chain infrastructure, and consumer commerce ecosystem.
+            </p>
+            <p class="about-text-paragraph">
+              Founded by industry leaders with decades of direct operational leadership across global supply chain networks, logistics conglomerates, and fast-growing enterprises, we believe that sustainable businesses cannot be built from spreadsheets alone. We step onto the operational floor alongside founders, aligning strategic capital with ground-level execution.
+            </p>
           </div>
 
-          <!-- Col 2: Our Network -->
-          <div class="eco-card-white">
-            <div>
-              <h3 style="font-family: var(--font-heading); font-size: 1.25rem; font-weight: 800; margin-bottom: 12px;">
-                Our Network</h3>
-              <p style="font-size: 0.92rem; color: var(--text-muted); line-height: 1.6;">
-                We work with founders, operators, advisors, investors, technology companies and strategic partners
-                across our business ecosystem.
-              </p>
-
-              <div class="network-logos-grid">
-                <div class="network-logo-box">Microsoft</div>
-                <div class="network-logo-box">AWS</div>
-                <div class="network-logo-box">TATA</div>
-                <div class="network-logo-box">Google</div>
-                <div class="network-logo-box">Deloitte</div>
-                <div class="network-logo-box">KPMG</div>
-                <div class="network-logo-box">ICICI</div>
-                <div class="network-logo-box">BluSmart</div>
-              </div>
-            </div>
-            <a href="#contact" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 16px;">
-              <span class="btn-text" data-text="Explore Our Partners"><span>Explore Our Partners</span></span>
-            </a>
-          </div>
-
-          <!-- Col 3: Skyscraper Image Card -->
-          <div class="eco-card-skyscraper">
-            <div class="skyscraper-content">
-              <h3 class="skyscraper-title">Stronger Partnerships.<br>Bigger Opportunities.</h3>
-              <a href="#contact" class="btn btn-outline-white"
-                style="border-radius: 50%; width: 44px; height: 44px; padding: 0;">&gt;</a>
+          <div class="about-editorial-col-right">
+            <p class="about-text-paragraph">
+              Our model is anchored in <strong>cross-venture synergy</strong>. Rather than operating in silos, our businesses—from temperature-controlled logistics and intelligent contract warehousing to modern staple distribution—reinforce one another, generating compounding efficiencies, shared routes, and collective enterprise access.
+            </p>
+            <p class="about-text-paragraph">
+              We practice <strong>disciplined patient capital</strong>. We prioritize positive unit economics, durable economic moats, and institutional corporate governance over short-term vanity metrics—building resilient companies designed to lead their sectors for decades.
+            </p>
+            <div class="about-actions-row">
+              <a href="#portfolio" class="btn btn-navy">
+                <span class="btn-text" data-text="Explore Our Businesses >"><span>Explore Our Businesses &gt;</span></span>
+              </a>
+              <a href="#contact" class="btn btn-outline-dark">
+                <span class="btn-text" data-text="Partner With Us"><span>Partner With Us</span></span>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Media Press Section ("In The Media") -->
-    <section class="media-section" id="media">
-      <div class="container">
-        <div class="header-flex-row">
-          <div>
-            <span class="section-tag-sm">IN THE MEDIA</span>
-            <h2 class="section-title">News, Announcements and Coverage.</h2>
-            <p class="section-subtitle" style="margin-bottom: 0;">See what's being said about our businesses,
-              investments and growth journey.</p>
-          </div>
-          <a href="#media" class="btn btn-outline-dark">
-            <span class="btn-text" data-text="View All Media"><span>View All Media</span></span>
-          </a>
-        </div>
 
-        <div class="media-cards-grid">
-          <!-- Card 1 -->
-          <div class="media-card">
-            <div>
-              <div class="media-thumb">
-                <img src="assets/ten_foods.jpg" alt="Ten Food Press">
-              </div>
-              <div class="media-outlet-name">ET Retail</div>
-              <div class="media-date">12 Mar 2026</div>
-              <h3 class="media-headline">Ten Food raises ₹2 crore pre-seed to rebuild India's staples market</h3>
-            </div>
-            <a href="https://retail.economictimes.indiatimes.com/news/food-entertainment/grocery/10on10-foods-raises-rs-2-crore-pre-seed-to-rebuild-indias-staples-market-with-fresh-stone-ground-flours/129068571"
-              target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 16px;">
-              <span class="btn-text" data-text="Read Article"><span>Read Article</span></span>
-            </a>
-          </div>
-
-          <!-- Card 2 -->
-          <div class="media-card">
-            <div>
-              <div class="media-thumb">
-                <img src="assets/reeferon.jpg" alt="ReeferON Press">
-              </div>
-              <div class="media-outlet-name" style="color: #1E40AF;">Business Standard</div>
-              <div class="media-date">08 Jan 2026</div>
-              <h3 class="media-headline">ReeferON's cold chain platform scales operations</h3>
-            </div>
-            <a href="https://reeferon.com/" target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 16px;">
-              <span class="btn-text" data-text="Read Article"><span>Read Article</span></span>
-            </a>
-          </div>
-
-          <!-- Card 3 -->
-          <div class="media-card">
-            <div>
-              <div class="media-thumb">
-                <img src="assets/ten_foods.jpg" alt="The Economic Times Press">
-              </div>
-              <div class="media-outlet-name" style="color: #991B1B;">The Economic Times</div>
-              <div class="media-date">21 Nov 2024</div>
-              <h3 class="media-headline">Ten Food eyes expansion in Indian retail market</h3>
-            </div>
-            <a href="https://retail.economictimes.indiatimes.com/news/food-entertainment/grocery/10on10-foods-raises-rs-2-crore-pre-seed-to-rebuild-indias-staples-market-with-fresh-stone-ground-flours/129068571"
-              target="_blank" rel="noopener noreferrer" class="btn btn-outline-dark" style="padding: 8px 18px; font-size: 0.84rem; margin-top: 16px;">
-              <span class="btn-text" data-text="Read Article"><span>Read Article</span></span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Bottom CTA Luxury Section ("Start A Conversation") -->
+    <!-- Bottom CTA Section ("PARTNER WITH US") -->
     <section class="cta-banner-section" id="contact">
-      <div class="cta-banner-overlay"></div>
       <div class="container">
-        
-        <div class="cta-unified-card" style="text-align: center; max-width: 820px; margin: 0 auto; padding: 52px 36px;">
-          <span class="section-tag-sm" style="color: var(--gold-primary); letter-spacing: 1.6px; font-weight: 700; display: inline-block; margin-bottom: 8px;">PARTNER WITH US</span>
-          <h2 class="cta-unified-title" style="margin: 0 auto 16px auto; text-align: center;">Let's Build What's Next.</h2>
-          <p class="cta-unified-desc" style="margin: 0 auto 28px auto; text-align: center; max-width: 620px;">
-            Whether you are a founder submitting an ambitious pitch, scaling an enterprise, or seeking strategic partnerships — we would love to start a conversation.
-          </p>
-          <div style="display: flex; justify-content: center; align-items: center; gap: 16px; flex-wrap: wrap;">
-            <a href="mailto:info@83ventures.in?subject=Inquiry%20-%20Eighty%20Three%20Ventures" class="btn btn-navy">
-              <span class="btn-text" data-text="Get In Touch >"><span>Get In Touch &gt;</span></span>
-            </a>
-            <a href="mailto:info@83ventures.in" class="btn btn-outline-dark">
-              <span class="btn-text" data-text="info@83ventures.in"><span>info@83ventures.in</span></span>
-            </a>
+        <div class="cta-direct-grid">
+          <div class="cta-direct-left">
+            <span class="section-tag-sm" style="font-weight: 700; letter-spacing: 1.5px; display: inline-block; margin-bottom: 12px;">PARTNER WITH US</span>
+            <h2 class="section-title" style="margin-bottom: 16px;">Let's Build &amp; Scale What's Next.</h2>
+            <p class="section-subtitle" style="margin-bottom: 24px;">
+              Whether you are a founder scaling a high-potential venture, an enterprise seeking cold-chain &amp; logistics synergy, or an institution exploring strategic co-investment — we are ready to partner.
+            </p>
+            <div class="cta-pills-row">
+              <span class="cta-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Venture Co-Building
+              </span>
+              <span class="cta-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Strategic Growth Capital
+              </span>
+              <span class="cta-pill">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                Supply Chain Ecosystem
+              </span>
+            </div>
+
+            <!-- Email & Direct Inquiry Action Buttons (Left Column) -->
+            <div class="cta-btn-group" style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;">
+              <div class="cta-btn-tooltip-wrap" data-tooltip="Send mail — our team will connect with you soon!">
+                <a href="mailto:connect@83ventures.in?subject=Strategic%20Partnership%20Inquiry%20-%20Eighty%20Three%20Ventures" class="btn btn-navy">
+                  <span class="btn-text" data-text="Send Direct Inquiry >"><span>Send Direct Inquiry &gt;</span></span>
+                </a>
+              </div>
+              <div class="cta-btn-tooltip-wrap" data-tooltip="Send mail — our team will connect with you soon!">
+                <a href="mailto:connect@83ventures.in" class="btn btn-outline-dark" style="display: inline-flex; align-items: center; gap: 8px;">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                  <span class="btn-text" data-text="connect@83ventures.in"><span>connect@83ventures.in</span></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="cta-direct-right">
+            <div class="cta-location-card">
+              <div class="cta-map-wrapper">
+                <iframe 
+                  src="https://maps.google.com/maps?q=Chirag+Infotech,+Office+No.+605,+Wagle+Industrial+Estate,+Thane+(W),+Maharashtra-400604&t=&z=15&ie=UTF8&iwloc=&output=embed" 
+                  style="border:0; width: 100%; height: 100%; min-height: 140px; display: block;" 
+                  allowfullscreen="" 
+                  loading="lazy" 
+                  referrerpolicy="no-referrer-when-downgrade"
+                  title="Eighty Three Ventures Headquarters Location Map">
+                </iframe>
+              </div>
+              <div class="cta-location-body">
+                <div class="cta-location-meta-grid">
+                  <div class="cta-location-top-flex">
+                    <div class="cta-location-pin-icon">
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                        <circle cx="12" cy="10" r="3"/>
+                      </svg>
+                    </div>
+                    <div class="cta-location-text-wrap">
+                      <h4 class="cta-location-name">Headquarters</h4>
+                      <p class="cta-location-addr">Chirag Infotech, Office No. 605, Wagle Industrial Estate, Thane (W), Maharashtra-400604</p>
+                    </div>
+                  </div>
+                  <div class="cta-location-btn-wrap">
+                    <a href="https://maps.google.com/?q=Chirag+Infotech,+Office+No.+605,+Wagle+Industrial+Estate,+Thane+West,+Maharashtra+400604" target="_blank" rel="noopener noreferrer" class="cta-map-link-btn" title="Open in Google Maps">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                      <span>Directions</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-
       </div>
     </section>
   </main>
@@ -756,7 +701,7 @@
         <!-- Col 1: Brand & Overview -->
         <div>
           <a href="#home" class="brand-logo">
-            <img src="assets/83 logo (4).png" alt="Eighty Three Ventures" class="brand-logo-img">
+            <img src="assets/white logo.png" alt="Eighty Three Ventures" class="brand-logo-img footer-logo-img">
           </a>
           <p class="footer-brand-desc">
             Eighty Three Ventures is a strategic investment and business platform partnering with ambitious founders,
@@ -764,9 +709,35 @@
           </p>
         </div>
 
-        <!-- Col 2: Corporate Address & Contact -->
+        <!-- Col 2: Navigation Links -->
+        <div class="footer-col-quicklinks">
+          <h4 class="footer-col-title">Quick Links</h4>
+          <ul class="footer-links-list">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#portfolio">Businesses</a></li>
+            <li><a href="#leadership">Leadership</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#contact">Contact Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 3: Business Ecosystem -->
+        <div class="footer-col-portfolio">
+          <h4 class="footer-col-title">Portfolio Businesses</h4>
+          <ul class="footer-links-list">
+            <li><a href="https://reeferon.com/" target="_blank" rel="noopener noreferrer">ReeferON Cold Chain</a></li>
+            <li><a href="https://par360.in" target="_blank" rel="noopener noreferrer">PAR 360 Supply Chain</a></li>
+            <li><a
+                href="https://retail.economictimes.indiatimes.com/news/food-entertainment/grocery/10on10-foods-raises-rs-2-crore-pre-seed-to-rebuild-indias-staples-market-with-fresh-stone-ground-flours/129068571"
+                target="_blank" rel="noopener noreferrer">Ten Food</a></li>
+            <li><a href="#contact">Strategic Investments</a></li>
+            <li><a href="#contact">Partner With Us</a></li>
+          </ul>
+        </div>
+
+        <!-- Col 4: Corporate Address & Contact -->
         <div>
-          <h4 class="footer-col-title">Corporate Office</h4>
+          <h4 class="footer-col-title">Headquarters</h4>
           <ul class="footer-address-list">
             <li class="footer-address-item">
               <svg class="footer-address-icon" width="18" height="18" viewBox="0 0 24 24" fill="none"
@@ -776,7 +747,9 @@
               </svg>
               <div>
                 <strong>Eighty Three Ventures Private Limited</strong><br>
-                Thane, Maharashtra - 400601,<br>India
+                Chirag Infotech, Office No. 605,<br>
+                Wagle Industrial Estate, Thane (W),<br>
+                Maharashtra - 400604, India
               </div>
             </li>
             <li class="footer-address-item">
@@ -796,50 +769,25 @@
                   d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
               </svg>
               <div>
-                Thane, MH • Mumbai Metropolitan Region
+                Wagle Industrial Estate, Thane (W) • Mumbai MMR
               </div>
             </li>
-          </ul>
-        </div>
-
-        <!-- Col 3: Navigation Links -->
-        <div>
-          <h4 class="footer-col-title">Quick Links</h4>
-          <ul class="footer-links-list">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#leadership">Leadership</a></li>
-            <li><a href="#portfolio">Businesses</a></li>
-            <li><a href="#media">Media</a></li>
-            <li><a href="#contact">Contact Us</a></li>
-          </ul>
-        </div>
-
-        <!-- Col 4: Business Ecosystem -->
-        <div>
-          <h4 class="footer-col-title">Portfolio Businesses</h4>
-          <ul class="footer-links-list">
-            <li><a href="https://reeferon.com/" target="_blank" rel="noopener noreferrer">ReeferON Cold Chain</a></li>
-            <li><a
-                href="https://retail.economictimes.indiatimes.com/news/food-entertainment/grocery/10on10-foods-raises-rs-2-crore-pre-seed-to-rebuild-indias-staples-market-with-fresh-stone-ground-flours/129068571"
-                target="_blank" rel="noopener noreferrer">Ten Food</a></li>
-            <li><a href="#contact">Strategic Investments</a></li>
-            <li><a href="#contact">Partner With Us</a></li>
           </ul>
         </div>
       </div>
 
       <div class="footer-bottom-line">
-        <div>© 2026 Eighty Three Ventures Private Limited. All Rights Reserved. Thane, Maharashtra, India.</div>
-        <div>
-          <a href="#" style="color: var(--text-subtle); margin-right: 16px;">Privacy Policy</a>
-          <a href="#" style="color: var(--text-subtle);">Terms & Conditions</a>
+        <div class="footer-copyright">© 2026 Eighty Three Ventures Private Limited. All Rights Reserved. Thane (W), Maharashtra, India.</div>
+        <div class="footer-legal-links">
+          <a href="#">Privacy Policy</a>
+          <span class="footer-legal-divider">•</span>
+          <a href="#">Terms &amp; Conditions</a>
         </div>
       </div>
     </div>
   </footer>
 
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=3.0"></script>
 </body>
 
 </html>

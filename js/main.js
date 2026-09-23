@@ -3,35 +3,78 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 1. Header Scroll Effect & Active Nav Link Highlight
+  // 0. Site Preloader Dismiss Handler
+  const preloader = document.getElementById('sitePreloader');
+  if (preloader) {
+    const startTime = Date.now();
+    const minDisplayTime = 1300; // Let the luxury animation complete smoothly
+
+    function dismissPreloader() {
+      const elapsed = Date.now() - startTime;
+      const remaining = Math.max(0, minDisplayTime - elapsed);
+
+      setTimeout(() => {
+        preloader.classList.add('fade-out');
+        setTimeout(() => {
+          if (preloader.parentNode) {
+            preloader.style.display = 'none';
+          }
+        }, 700);
+      }, remaining);
+    }
+
+    if (document.readyState === 'complete') {
+      dismissPreloader();
+    } else {
+      window.addEventListener('load', dismissPreloader);
+      // Fallback timeout
+      setTimeout(dismissPreloader, 2800);
+    }
+  }
+
+  // 1. Header Scroll Effect & Active Nav Link Highlight (ScrollSpy)
   const header = document.querySelector('.header');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
+  const isHomePage = sections.length > 0;
 
-  window.addEventListener('scroll', () => {
+  function updateActiveNav() {
     if (window.scrollY > 20) {
-      header.classList.add('scrolled');
+      if (header) header.classList.add('scrolled');
     } else {
-      header.classList.remove('scrolled');
+      if (header) header.classList.remove('scrolled');
     }
 
-    // ScrollSpy active indicator
-    let current = '';
-    sections.forEach(section => {
-      const sectionTop = section.offsetTop - 120;
-      const sectionHeight = section.offsetHeight;
-      if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-        current = section.getAttribute('id');
-      }
-    });
+    // ScrollSpy active indicator (only on pages where sections exist)
+    if (isHomePage) {
+      let current = 'home';
+      const scrollPos = window.scrollY + 180;
 
-    navLinks.forEach(link => {
-      link.classList.remove('active');
-      if (link.getAttribute('href') === `#${current}`) {
-        link.classList.add('active');
+      sections.forEach(section => {
+        const top = section.offsetTop;
+        if (scrollPos >= top) {
+          current = section.getAttribute('id');
+        }
+      });
+
+      // Bottom of page activates Contact
+      if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 50)) {
+        current = 'contact';
       }
-    });
-  });
+
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${current}` || href === `index.html#${current}`) {
+          link.classList.add('active');
+        } else if (href && (href.startsWith('#') || href.startsWith('index.html#'))) {
+          link.classList.remove('active');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
 
   // 2. Mobile Menu Navigation Toggle & Overlay Handler
   const mobileToggle = document.getElementById('mobileToggle');
@@ -168,5 +211,117 @@ document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       toastNotification.classList.remove('active');
     }, 4500);
+  }
+
+  // 5. Desktop-Only Cursor Following "Investing in Better Tomorrows" (Hero Section Only)
+  const heroSection = document.getElementById('home');
+  const heroBadge = document.getElementById('heroFollowerBadge');
+
+  if (heroSection && heroBadge) {
+    let isHoveringHero = false;
+    let targetX = 0;
+    let targetY = 0;
+    let currentX = 0;
+    let currentY = 0;
+    let initialized = false;
+
+    function isDesktop() {
+      return window.innerWidth > 1024 && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    }
+
+    function getRestingPosition() {
+      const heroRect = heroSection.getBoundingClientRect();
+      const badgeRect = heroBadge.getBoundingClientRect();
+      return {
+        x: Math.max(20, heroRect.width - (badgeRect.width || 230) - 40),
+        y: 85
+      };
+    }
+
+    function initPosition() {
+      if (!isDesktop()) {
+        heroBadge.style.transform = '';
+        heroBadge.style.left = '';
+        heroBadge.style.top = '';
+        heroBadge.style.right = '';
+        initialized = false;
+        return;
+      }
+      const restPos = getRestingPosition();
+      currentX = restPos.x;
+      currentY = restPos.y;
+      targetX = restPos.x;
+      targetY = restPos.y;
+      heroBadge.style.left = '0px';
+      heroBadge.style.top = '0px';
+      heroBadge.style.right = 'auto';
+      heroBadge.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+      initialized = true;
+    }
+
+    requestAnimationFrame(initPosition);
+
+    function animateBadge() {
+      if (isDesktop() && initialized) {
+        const ease = isHoveringHero ? 0.12 : 0.07;
+        currentX += (targetX - currentX) * ease;
+        currentY += (targetY - currentY) * ease;
+        heroBadge.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
+      }
+      requestAnimationFrame(animateBadge);
+    }
+    requestAnimationFrame(animateBadge);
+
+    heroSection.addEventListener('mousemove', (e) => {
+      if (!isDesktop()) return;
+      isHoveringHero = true;
+      const heroRect = heroSection.getBoundingClientRect();
+      const badgeRect = heroBadge.getBoundingClientRect();
+      const badgeWidth = badgeRect.width || 230;
+      const badgeHeight = badgeRect.height || 36;
+
+      let desiredX = (e.clientX - heroRect.left) + 20;
+      let desiredY = (e.clientY - heroRect.top) + 20;
+
+      const maxX = heroRect.width - badgeWidth - 20;
+      const maxY = heroRect.height - badgeHeight - 20;
+      const minX = 20;
+      const minY = 20;
+
+      if (desiredX > maxX) {
+        desiredX = (e.clientX - heroRect.left) - badgeWidth - 16;
+      }
+      if (desiredY > maxY) {
+        desiredY = (e.clientY - heroRect.top) - badgeHeight - 16;
+      }
+
+      targetX = Math.max(minX, Math.min(desiredX, maxX));
+      targetY = Math.max(minY, Math.min(desiredY, maxY));
+    });
+
+    heroSection.addEventListener('mouseenter', () => {
+      if (!isDesktop()) return;
+      isHoveringHero = true;
+    });
+
+    heroSection.addEventListener('mouseleave', () => {
+      if (!isDesktop()) return;
+      isHoveringHero = false;
+      const restPos = getRestingPosition();
+      targetX = restPos.x;
+      targetY = restPos.y;
+    });
+
+    window.addEventListener('resize', () => {
+      if (!isDesktop()) {
+        heroBadge.style.left = '';
+        heroBadge.style.top = '';
+        heroBadge.style.right = '';
+        heroBadge.style.transform = '';
+        initialized = false;
+      } else if (!initialized) {
+        initPosition();
+      }
+    });
   }
 });

@@ -6,6 +6,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 0. Site Preloader Dismiss Handler
   const preloader = document.getElementById('sitePreloader');
   if (preloader) {
+    document.body.classList.add('is-loading');
+    window.scrollTo(0, 0);
     const startTime = Date.now();
     const minDisplayTime = 1300; // Let the luxury animation complete smoothly
 
@@ -15,6 +17,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       setTimeout(() => {
         preloader.classList.add('fade-out');
+        document.body.classList.remove('is-loading');
+        document.body.classList.add('page-loaded');
         setTimeout(() => {
           if (preloader.parentNode) {
             preloader.style.display = 'none';
@@ -30,6 +34,9 @@ document.addEventListener('DOMContentLoaded', () => {
       // Fallback timeout
       setTimeout(dismissPreloader, 2800);
     }
+  } else {
+    document.body.classList.remove('is-loading');
+    document.body.classList.add('page-loaded');
   }
 
   // 1. Header Scroll Effect & Active Nav Link Highlight (ScrollSpy)

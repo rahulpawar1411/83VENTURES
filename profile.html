@@ -24,7 +24,7 @@
   <link rel="stylesheet" href="css/styles.css?v=8.0">
 </head>
 
-<body>
+<body class="is-loading">
 
   <!-- Site Loading Screen -->
   <div id="sitePreloader" class="site-preloader" aria-label="Loading Eighty Three Ventures">
@@ -462,9 +462,6 @@
         stream.innerHTML = data.companies.map((item, idx) => `
           <div class="editorial-timeline-item ${idx === 0 ? 'active' : ''}" data-idx="${idx}">
             <button type="button" class="timeline-accordion-header" aria-expanded="${idx === 0 ? 'true' : 'false'}" aria-label="Toggle details for ${item.name}">
-              <div class="timeline-num-col">
-                <span class="timeline-num">0${idx + 1}</span>
-              </div>
               <div class="timeline-summary-col">
                 <div class="timeline-header-row">
                   <h3 class="timeline-company-name">${item.name}</h3>

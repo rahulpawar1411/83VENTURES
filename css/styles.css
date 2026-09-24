@@ -5649,13 +5649,13 @@ body.menu-open {
   display: inline-block;
   padding: 6px 18px;
   border-radius: 30px;
-  background: rgba(197, 155, 39, 0.12);
-  color: var(--gold-primary);
+  background: rgba(18, 37, 33, 0.08);
+  color: rgba(18, 37, 33, 0.75);
   font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 1.4px;
   text-transform: uppercase;
-  border: 1px solid rgba(197, 155, 39, 0.25);
+  border: 1px solid rgba(18, 37, 33, 0.18);
 }
 
 .experience-title {
@@ -5691,13 +5691,13 @@ body.menu-open {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  border-left: 4px solid var(--gold-primary);
+  border-left: 4px solid #122521;
 }
 
 .exp-company-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 16px 36px rgba(25, 52, 46, 0.09);
-  border-color: rgba(197, 155, 39, 0.4);
+  border-color: rgba(18, 37, 33, 0.3);
   border-left-color: #19342E;
 }
 
@@ -5720,8 +5720,8 @@ body.menu-open {
   font-family: var(--font-heading);
   font-size: 0.8rem;
   font-weight: 800;
-  color: var(--gold-primary);
-  background: rgba(197, 155, 39, 0.12);
+  color: rgba(18, 37, 33, 0.8);
+  background: rgba(18, 37, 33, 0.08);
   padding: 3px 8px;
   border-radius: 6px;
 }
@@ -5751,7 +5751,7 @@ body.menu-open {
 .exp-role-title {
   font-size: 0.95rem;
   font-weight: 700;
-  color: #B38F44;
+  color: rgba(18, 37, 33, 0.72);
   margin-bottom: 12px;
   line-height: 1.4;
 }
@@ -6721,12 +6721,12 @@ body.menu-open {
 }
 
 .editorial-timeline-item:hover {
-  border-color: rgba(197, 155, 39, 0.45);
+  border-color: rgba(18, 37, 33, 0.25);
   box-shadow: 0 6px 18px rgba(25, 52, 46, 0.08);
 }
 
 .editorial-timeline-item.active {
-  border-color: var(--gold-primary);
+  border-color: rgba(18, 37, 33, 0.35);
   box-shadow: 0 8px 24px rgba(25, 52, 46, 0.09);
   background: #FCFBF9;
 }
@@ -6788,15 +6788,15 @@ body.menu-open {
 }
 
 .editorial-timeline-item.active .timeline-role-pill {
-  background: rgba(197, 155, 39, 0.15);
+  background: rgba(18, 37, 33, 0.08);
   color: #19342E;
-  border-color: rgba(197, 155, 39, 0.3);
+  border-color: rgba(18, 37, 33, 0.2);
 }
 
 .timeline-role-title {
   font-size: 0.94rem;
   font-weight: 700;
-  color: #B38F44;
+  color: rgba(18, 37, 33, 0.72);
   margin: 0;
   line-height: 1.4;
 }
@@ -6823,9 +6823,9 @@ body.menu-open {
 
 .editorial-timeline-item.active .timeline-toggle-icon {
   transform: rotate(180deg);
-  background: var(--gold-primary);
+  background: #122521;
   color: #FFFFFF;
-  border-color: var(--gold-primary);
+  border-color: #122521;
 }
 
 /* Accordion Collapsible Drawer */
@@ -6863,7 +6863,7 @@ body.menu-open {
   padding: 38px 44px;
   color: #FFFFFF;
   box-shadow: 0 16px 40px rgba(25, 52, 46, 0.16);
-  border: 1px solid rgba(197, 155, 39, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   margin-top: 12px;
 }
 
@@ -6877,9 +6877,9 @@ body.menu-open {
   width: 52px;
   height: 52px;
   border-radius: 14px;
-  background: rgba(197, 155, 39, 0.18);
-  border: 1px solid rgba(197, 155, 39, 0.4);
-  color: var(--gold-primary);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #FFFFFF;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -6912,14 +6912,14 @@ body.menu-open {
   color: #FFFFFF;
   line-height: 1.75;
   background: rgba(255, 255, 255, 0.06);
-  border-left: 3px solid var(--gold-primary);
+  border-left: 3px solid rgba(255, 255, 255, 0.35);
   padding: 14px 18px;
   border-radius: 0 8px 8px 0;
   margin-top: 4px;
 }
 
 .ecosystem-callout-highlight strong {
-  color: #F6E05E;
+  color: #FFFFFF;
 }
 
 /* Bottom Navigation */

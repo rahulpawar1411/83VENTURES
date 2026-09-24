@@ -6042,7 +6042,7 @@ body.menu-open {
 }
 
 /* ==========================================================================
-   Venture-Specific Themes (ReeferON & TEN Foods) & Cream/White Contact Banner
+   Venture-Specific Themes (ReeferON & TEN Food) & Cream/White Contact Banner
    ========================================================================== */
 
 /* --- Venture Theme: ReeferON (Cold Frost Cyan) --- */
@@ -6079,7 +6079,7 @@ body.menu-open {
   color: #FFFFFF !important;
 }
 
-/* --- Venture Theme: TEN Foods (#1A352F Theme) --- */
+/* --- Venture Theme: TEN Food / Try Eat Now (#1A352F Theme) --- */
 .portfolio-card-design2.theme-tenfoods {
   border-top: 4px solid #1A352F;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);

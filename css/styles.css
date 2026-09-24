@@ -8365,3 +8365,216 @@ body:not(.page-loaded) {
   }
 }
 
+/* ==========================================================================
+   Contact Us — richer editorial content
+   ========================================================================== */
+.contact-section-rich {
+  padding: 88px 0 90px;
+  background:
+    linear-gradient(165deg, #FFFFFF 0%, #F8FAFC 45%, #EEF4F1 100%);
+  border-top: 1px solid var(--border-light);
+}
+
+.contact-rich-header {
+  max-width: 760px;
+  margin-bottom: 36px;
+}
+
+.contact-who-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin-bottom: 44px;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
+}
+
+.contact-who-item {
+  display: grid;
+  grid-template-columns: 40px 1fr;
+  gap: 12px;
+  padding: 22px 18px 22px 0;
+  border-right: 1px solid var(--border-light);
+  transition: background-color 0.3s ease;
+}
+
+.contact-who-item:last-child {
+  border-right: none;
+  padding-right: 0;
+}
+
+.contact-who-item:hover {
+  background-color: rgba(238, 244, 241, 0.85);
+}
+
+.contact-who-num {
+  font-family: var(--font-heading);
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--navy-btn);
+  padding-top: 3px;
+}
+
+.contact-who-item h3 {
+  font-family: var(--font-heading);
+  font-size: 1.02rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 6px;
+}
+
+.contact-who-item p {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.contact-channels-title {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: var(--text-dark);
+  margin: 0 0 8px;
+}
+
+.contact-channels-intro {
+  font-size: 0.94rem;
+  line-height: 1.65;
+  color: var(--text-muted);
+  margin: 0 0 22px;
+  max-width: 520px;
+}
+
+.contact-channel-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--border-light);
+  margin-bottom: 28px;
+}
+
+.contact-channel-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 8px;
+  margin: 0 -8px;
+  border-bottom: 1px solid var(--border-light);
+  border-radius: 8px;
+  transition: background-color 0.3s ease;
+}
+
+.contact-channel-row:hover {
+  background-color: #EEF4F1;
+}
+
+.contact-channel-label {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: var(--navy-btn);
+  margin-bottom: 4px;
+}
+
+.contact-channel-email {
+  font-family: var(--font-heading);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  text-decoration: none;
+}
+
+.contact-channel-email:hover {
+  color: var(--navy-btn);
+}
+
+.contact-channel-btn {
+  flex-shrink: 0;
+  padding: 8px 16px !important;
+  font-size: 0.82rem !important;
+}
+
+.contact-expect {
+  padding-top: 4px;
+}
+
+.contact-expect h4 {
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin: 0 0 10px;
+}
+
+.contact-expect ul {
+  margin: 0;
+  padding: 0 0 0 18px;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.contact-expect li {
+  margin-bottom: 4px;
+}
+
+.contact-hq-note {
+  font-size: 0.8rem;
+  color: var(--text-subtle);
+  margin: 6px 0 0;
+  font-weight: 500;
+}
+
+.contact-map-footnote {
+  font-size: 0.84rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+  margin: 14px 0 0;
+}
+
+.contact-section-rich .cta-direct-grid {
+  align-items: start;
+}
+
+.contact-section-rich .cta-map-wrapper {
+  min-height: 180px;
+}
+
+@media (max-width: 992px) {
+  .contact-who-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-who-item {
+    border-right: none;
+    border-bottom: 1px solid var(--border-light);
+    padding: 18px 0;
+  }
+
+  .contact-who-item:last-child {
+    border-bottom: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-section-rich {
+    padding: 56px 0 60px;
+  }
+
+  .contact-channel-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 16px 6px;
+  }
+
+  .contact-channel-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+

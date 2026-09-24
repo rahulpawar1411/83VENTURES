@@ -3,35 +3,55 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 0. Site Preloader Dismiss Handler
+  // 0. Site Preloader — show on load + every menu / page change
   const preloader = document.getElementById('sitePreloader');
+  const MIN_PRELOADER_MS = 1100;
+
+  function showPageLoader() {
+    if (!preloader) return;
+    preloader.style.display = 'flex';
+    preloader.classList.remove('fade-out');
+    // Restart line animation
+    const fill = preloader.querySelector('.preloader-line-fill');
+    if (fill) {
+      fill.style.animation = 'none';
+      // force reflow
+      void fill.offsetWidth;
+      fill.style.animation = '';
+    }
+    document.body.classList.add('is-loading');
+    document.body.classList.remove('page-loaded', 'menu-open');
+    window.scrollTo(0, 0);
+  }
+
+  function hidePageLoader() {
+    if (!preloader) {
+      document.body.classList.remove('is-loading');
+      document.body.classList.add('page-loaded');
+      return;
+    }
+    preloader.classList.add('fade-out');
+    document.body.classList.remove('is-loading');
+    document.body.classList.add('page-loaded');
+    setTimeout(() => {
+      if (preloader.parentNode) preloader.style.display = 'none';
+    }, 700);
+  }
+
   if (preloader) {
     document.body.classList.add('is-loading');
     window.scrollTo(0, 0);
     const startTime = Date.now();
-    const minDisplayTime = 1300; // Let the luxury animation complete smoothly
 
     function dismissPreloader() {
-      const elapsed = Date.now() - startTime;
-      const remaining = Math.max(0, minDisplayTime - elapsed);
-
-      setTimeout(() => {
-        preloader.classList.add('fade-out');
-        document.body.classList.remove('is-loading');
-        document.body.classList.add('page-loaded');
-        setTimeout(() => {
-          if (preloader.parentNode) {
-            preloader.style.display = 'none';
-          }
-        }, 700);
-      }, remaining);
+      const remaining = Math.max(0, MIN_PRELOADER_MS - (Date.now() - startTime));
+      setTimeout(hidePageLoader, remaining);
     }
 
     if (document.readyState === 'complete') {
       dismissPreloader();
     } else {
       window.addEventListener('load', dismissPreloader);
-      // Fallback timeout
       setTimeout(dismissPreloader, 2800);
     }
   } else {
@@ -39,11 +59,122 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.classList.add('page-loaded');
   }
 
+  // Show loader again when returning via browser back/forward cache
+  window.addEventListener('pageshow', (event) => {
+    if (event.persisted && preloader) {
+      showPageLoader();
+      setTimeout(hidePageLoader, MIN_PRELOADER_MS);
+    }
+  });
+
+  function currentPageFile() {
+    return (window.location.pathname.split('/').pop() || 'index.html').toLowerCase() || 'index.html';
+  }
+
+  function resolveInternalNav(href) {
+    if (!href) return null;
+    const trimmed = href.trim();
+    if (
+      trimmed.startsWith('mailto:') ||
+      trimmed.startsWith('tel:') ||
+      trimmed.startsWith('javascript:') ||
+      trimmed === '#'
+    ) {
+      return null;
+    }
+    // External absolute URLs
+    if (/^https?:\/\//i.test(trimmed)) {
+      try {
+        const url = new URL(trimmed);
+        if (url.origin !== window.location.origin) return null;
+        return { type: 'page', href: trimmed };
+      } catch {
+        return null;
+      }
+    }
+
+    // Same-page hash: #about, #portfolio
+    if (trimmed.startsWith('#')) {
+      return { type: 'hash', hash: trimmed };
+    }
+
+    // index.html#contact or about.html
+    const hashIndex = trimmed.indexOf('#');
+    const filePart = (hashIndex >= 0 ? trimmed.slice(0, hashIndex) : trimmed).split('/').pop().toLowerCase();
+    const hashPart = hashIndex >= 0 ? trimmed.slice(hashIndex) : '';
+    const current = currentPageFile();
+
+    if (!filePart || filePart === current || (filePart === 'index.html' && (current === '' || current === 'index.html'))) {
+      if (hashPart) return { type: 'hash', hash: hashPart };
+      // Same page, no hash — still show loader briefly then stay
+      return { type: 'reload', href: trimmed };
+    }
+
+    return { type: 'page', href: trimmed };
+  }
+
+  function goWithLoader(target) {
+    showPageLoader();
+
+    if (target.type === 'page' || target.type === 'reload') {
+      setTimeout(() => {
+        window.location.href = target.href;
+      }, 280);
+      return;
+    }
+
+    if (target.type === 'hash') {
+      setTimeout(() => {
+        hidePageLoader();
+        const el = document.querySelector(target.hash);
+        if (el) {
+          const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
+          const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+          window.scrollTo({ top, behavior: 'smooth' });
+          if (history.pushState) {
+            history.pushState(null, '', target.hash);
+          }
+        }
+      }, MIN_PRELOADER_MS);
+    }
+  }
+
+  // Intercept menu + internal site links for loading transition
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    if (!link) return;
+    if (link.target === '_blank' || link.hasAttribute('download')) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+
+    const href = link.getAttribute('href');
+    const nav = resolveInternalNav(href);
+    if (!nav) return;
+
+    const inChrome = !!(
+      link.closest('.header') ||
+      link.closest('.footer') ||
+      link.closest('.nav-menu') ||
+      link.closest('.brand-logo') ||
+      link.classList.contains('nav-link') ||
+      link.classList.contains('mobile-drawer-partner-btn')
+    );
+
+    // Always loader when leaving to another HTML page; hash menus only from header/footer nav
+    if (nav.type === 'hash' && !inChrome) return;
+    if (nav.type === 'reload' && !inChrome) return;
+
+    e.preventDefault();
+    goWithLoader(nav);
+  }, true);
+
   // 1. Header Scroll Effect & Active Nav Link Highlight (ScrollSpy)
   const header = document.querySelector('.header');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
-  const isHomePage = sections.length > 0;
+  const pathFile = (window.location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  // ScrollSpy only on the landing page — never override Why Us / Careers / Profile active states
+  const isHomePage = (pathFile === '' || pathFile === 'index.html' || !pathFile.includes('.html'))
+    && !!document.getElementById('home');
 
   function updateActiveNav() {
     if (window.scrollY > 20) {
@@ -52,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
       if (header) header.classList.remove('scrolled');
     }
 
-    // ScrollSpy active indicator (only on pages where sections exist)
+    // ScrollSpy active indicator (home page only)
     if (isHomePage) {
       let current = 'home';
       const scrollPos = window.scrollY + 180;
@@ -70,10 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
       }
 
       navLinks.forEach(link => {
-        const href = link.getAttribute('href');
-        if (href === `#${current}` || href === `index.html#${current}`) {
+        const href = link.getAttribute('href') || '';
+        const isMatch = href === `#${current}` || href === `index.html#${current}`;
+        if (isMatch) {
           link.classList.add('active');
-        } else if (href && (href.startsWith('#') || href.startsWith('index.html#'))) {
+        } else {
+          // Clear other actives so Why Us / Careers never double-underline with Home
           link.classList.remove('active');
         }
       });

@@ -646,21 +646,21 @@ body.page-loaded .hero-cta-group {
 
 .hero-top-right-note {
   position: absolute;
-  top: calc(var(--nav-height) + 28px);
-  right: 40px;
+  top: 0;
+  left: 0;
   font-size: 0.82rem;
   font-family: var(--font-body);
   font-style: italic;
   font-weight: 500;
   color: #19342E;
-  z-index: 10;
+  z-index: 15;
   display: flex;
   align-items: center;
   padding: 7px 18px;
-  background: rgba(255, 255, 255, 0.72);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(181, 138, 43, 0.3);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(181, 138, 43, 0.35);
   border-radius: 999px;
   box-shadow: 0 4px 16px -2px rgba(25, 52, 46, 0.08), 0 2px 6px rgba(0, 0, 0, 0.02);
   pointer-events: none; /* Never blocks clicks on hero links/buttons */
@@ -669,10 +669,11 @@ body.page-loaded .hero-cta-group {
   white-space: nowrap;
   will-change: transform;
   opacity: 0;
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 body.page-loaded .hero-top-right-note {
-  animation: heroBadgePop 0.85s cubic-bezier(0.16, 1, 0.3, 1) 0.48s forwards;
+  opacity: 1;
 }
 
 /* 4 Strategic Pillars Bar (Serious Corporate & Static) */
@@ -6448,10 +6449,10 @@ body.menu-open {
   text-align: center;
   gap: 14px;
   padding: 18px 20px;
-  background: #FAF8F5;
+  background: #F8FAFC;
   border-radius: 14px;
-  border: 1px solid rgba(197, 155, 39, 0.22);
-  border-top: 3px solid var(--gold-primary);
+  border: 1px solid #E2E8F0;
+  border-top: 3px solid #94A3B8;
   box-shadow: 0 4px 16px rgba(25, 52, 46, 0.04);
 }
 
@@ -6474,7 +6475,7 @@ body.menu-open {
 }
 
 .editorial-meta-item svg {
-  stroke: var(--gold-primary);
+  stroke: #64748B;
   flex-shrink: 0;
 }
 
@@ -6484,11 +6485,12 @@ body.menu-open {
   font-weight: 800;
   letter-spacing: 1px;
   text-transform: uppercase;
-  color: var(--gold-primary);
-  background: rgba(197, 155, 39, 0.12);
+  color: #334155;
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
   padding: 3px 10px;
   border-radius: 100px;
-  border: 1px solid rgba(197, 155, 39, 0.25);
+  border: 1px solid #CBD5E1;
+  box-shadow: 0 1px 3px rgba(100, 116, 139, 0.08);
 }
 
 .editorial-meta-affiliations {
@@ -6576,11 +6578,11 @@ body.menu-open {
 
 .editorial-eyebrow {
   display: inline-block;
-  font-size: 0.78rem;
+  font-size: 0.76rem;
   font-weight: 800;
   letter-spacing: 1.6px;
   text-transform: uppercase;
-  color: var(--gold-primary);
+  color: #64748B;
   margin-bottom: 16px;
 }
 
@@ -6600,11 +6602,21 @@ body.menu-open {
 }
 
 .editorial-role-tag {
-  font-size: 0.92rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.84rem;
   font-weight: 700;
-  color: var(--gold-primary);
-  margin-bottom: 4px;
-  line-height: 1.4;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #334155;
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 50%, #F1F5F9 100%);
+  border: 1px solid #CBD5E1;
+  padding: 5px 14px;
+  border-radius: 100px;
+  box-shadow: 0 2px 6px rgba(100, 116, 139, 0.08), inset 0 1px 0 #FFFFFF;
+  margin-top: 4px;
+  margin-bottom: 6px;
+  line-height: 1.3;
 }
 
 /* Editorial Pull Quote (Large, Dignified Typography) */
@@ -6775,22 +6787,27 @@ body.menu-open {
 }
 
 .timeline-role-pill {
-  display: inline-block;
-  font-size: 0.74rem;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.73rem;
   font-weight: 700;
-  letter-spacing: 0.4px;
-  color: #64748B;
-  background: #F1F5F9;
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  padding: 3px 10px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #334155;
+  background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+  border: 1px solid #CBD5E1;
+  padding: 3px 11px;
   border-radius: 100px;
   white-space: nowrap;
+  box-shadow: 0 1px 3px rgba(100, 116, 139, 0.08), inset 0 1px 0 #FFFFFF;
+  transition: all 0.25s ease;
 }
 
 .editorial-timeline-item.active .timeline-role-pill {
-  background: rgba(18, 37, 33, 0.08);
-  color: #19342E;
-  border-color: rgba(18, 37, 33, 0.2);
+  background: linear-gradient(135deg, #E2E8F0 0%, #CBD5E1 100%);
+  color: #1E293B;
+  border-color: #94A3B8;
+  box-shadow: 0 2px 5px rgba(71, 85, 105, 0.12), inset 0 1px 0 #FFFFFF;
 }
 
 .timeline-role-title {

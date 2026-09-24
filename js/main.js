@@ -265,7 +265,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, 4500);
   }
 
-  // 5. Desktop-Only Cursor Following "Investing in Better Tomorrows" (Hero Section Only)
+  // 5. Hero Cursor Following "Investing in Better Tomorrows" Badge
   const heroSection = document.getElementById('home');
   const heroBadge = document.getElementById('heroFollowerBadge');
 
@@ -277,25 +277,23 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentY = 0;
     let initialized = false;
 
-    function isDesktop() {
-      return window.innerWidth > 1024 && window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    function isFollowerEnabled() {
+      return window.innerWidth > 768;
     }
 
     function getRestingPosition() {
       const heroRect = heroSection.getBoundingClientRect();
       const badgeRect = heroBadge.getBoundingClientRect();
+      const badgeWidth = badgeRect.width || 230;
+      const navHeight = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--nav-height')) || 70;
       return {
-        x: Math.max(20, heroRect.width - (badgeRect.width || 230) - 40),
-        y: 85
+        x: Math.max(20, heroRect.width - badgeWidth - 40),
+        y: navHeight + 28
       };
     }
 
     function initPosition() {
-      if (!isDesktop()) {
-        heroBadge.style.transform = '';
-        heroBadge.style.left = '';
-        heroBadge.style.top = '';
-        heroBadge.style.right = '';
+      if (!isFollowerEnabled()) {
         initialized = false;
         return;
       }
@@ -304,18 +302,18 @@ document.addEventListener('DOMContentLoaded', () => {
       currentY = restPos.y;
       targetX = restPos.x;
       targetY = restPos.y;
-      heroBadge.style.left = '0px';
-      heroBadge.style.top = '0px';
-      heroBadge.style.right = 'auto';
       heroBadge.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
       initialized = true;
     }
 
-    requestAnimationFrame(initPosition);
+    // Initialize position after DOM layout renders
+    requestAnimationFrame(() => {
+      initPosition();
+    });
 
     function animateBadge() {
-      if (isDesktop() && initialized) {
-        const ease = isHoveringHero ? 0.12 : 0.07;
+      if (isFollowerEnabled() && initialized) {
+        const ease = isHoveringHero ? 0.12 : 0.08;
         currentX += (targetX - currentX) * ease;
         currentY += (targetY - currentY) * ease;
         heroBadge.style.transform = `translate3d(${currentX.toFixed(2)}px, ${currentY.toFixed(2)}px, 0)`;
@@ -325,15 +323,17 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(animateBadge);
 
     heroSection.addEventListener('mousemove', (e) => {
-      if (!isDesktop()) return;
+      if (!isFollowerEnabled()) return;
       isHoveringHero = true;
+      if (!initialized) initPosition();
+
       const heroRect = heroSection.getBoundingClientRect();
       const badgeRect = heroBadge.getBoundingClientRect();
       const badgeWidth = badgeRect.width || 230;
       const badgeHeight = badgeRect.height || 36;
 
-      let desiredX = (e.clientX - heroRect.left) + 20;
-      let desiredY = (e.clientY - heroRect.top) + 20;
+      let desiredX = (e.clientX - heroRect.left) + 18;
+      let desiredY = (e.clientY - heroRect.top) + 18;
 
       const maxX = heroRect.width - badgeWidth - 20;
       const maxY = heroRect.height - badgeHeight - 20;
@@ -341,10 +341,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const minY = 20;
 
       if (desiredX > maxX) {
-        desiredX = (e.clientX - heroRect.left) - badgeWidth - 16;
+        desiredX = (e.clientX - heroRect.left) - badgeWidth - 14;
       }
       if (desiredY > maxY) {
-        desiredY = (e.clientY - heroRect.top) - badgeHeight - 16;
+        desiredY = (e.clientY - heroRect.top) - badgeHeight - 14;
       }
 
       targetX = Math.max(minX, Math.min(desiredX, maxX));
@@ -352,12 +352,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     heroSection.addEventListener('mouseenter', () => {
-      if (!isDesktop()) return;
+      if (!isFollowerEnabled()) return;
       isHoveringHero = true;
     });
 
     heroSection.addEventListener('mouseleave', () => {
-      if (!isDesktop()) return;
+      if (!isFollowerEnabled()) return;
       isHoveringHero = false;
       const restPos = getRestingPosition();
       targetX = restPos.x;
@@ -365,14 +365,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     window.addEventListener('resize', () => {
-      if (!isDesktop()) {
-        heroBadge.style.left = '';
-        heroBadge.style.top = '';
-        heroBadge.style.right = '';
-        heroBadge.style.transform = '';
+      if (isFollowerEnabled()) {
+        if (!initialized) {
+          initPosition();
+        } else if (!isHoveringHero) {
+          const restPos = getRestingPosition();
+          targetX = restPos.x;
+          targetY = restPos.y;
+        }
+      } else {
         initialized = false;
-      } else if (!initialized) {
-        initPosition();
       }
     });
   }

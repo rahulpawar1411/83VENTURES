@@ -21,7 +21,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=8.0">
+  <link rel="stylesheet" href="css/styles.css?v=10.4">
 </head>
 
 <body class="is-loading">
@@ -52,19 +52,45 @@
 
       <nav>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="index.html#home" class="nav-link" data-text="Home"><span>Home</span></a></li>
-          <li><a href="index.html#portfolio" class="nav-link" data-text="Businesses"><span>Businesses</span></a></li>
-          <li><a href="index.html#leadership" class="nav-link active" data-text="Leadership"><span>Leadership</span></a></li>
-          <li><a href="index.html#about" class="nav-link" data-text="About Us"><span>About Us</span></a></li>
-          <li><a href="index.html#contact" class="nav-link" data-text="Contact"><span>Contact</span></a></li>
+          <li class="mobile-drawer-header">
+            <div class="mobile-drawer-brand">
+              <img src="assets/83 logo (4).png" alt="83 Ventures" class="mobile-drawer-logo">
+            </div>
+            <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </li>
+          <li class="nav-item"><a href="index.html#home" class="nav-link" data-text="Home"><span>Home</span></a></li>
+          <li class="nav-item"><a href="index.html#portfolio" class="nav-link" data-text="Businesses"><span>Businesses</span></a></li>
+          <li class="nav-item"><a href="index.html#leadership" class="nav-link active" data-text="Leadership"><span>Leadership</span></a></li>
+          <li class="nav-item"><a href="index.html#about" class="nav-link" data-text="About Us"><span>About Us</span></a></li>
+          <li class="nav-item"><a href="index.html#contact" class="nav-link" data-text="Contact"><span>Contact</span></a></li>
+          <li class="mobile-drawer-footer">
+            <a href="index.html#contact" class="btn btn-navy mobile-drawer-partner-btn">
+              <span class="btn-text" data-text="Partner With Us >"><span>Partner With Us &gt;</span></span>
+            </a>
+            <div class="mobile-drawer-tagline">
+              <span>Capitalized for Vision.</span>
+              <span>Engineered for Scale.</span>
+            </div>
+          </li>
         </ul>
       </nav>
 
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div class="header-actions">
         <a href="index.html#contact" class="btn btn-navy" id="headerPartnerBtn">
           <span class="btn-text" data-text="Partner With Us >"><span>Partner With Us &gt;</span></span>
         </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">☰</button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
+          <span class="hamburger-box">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </span>
+        </button>
       </div>
     </div>
   </header>
@@ -142,7 +168,7 @@
       </section>
 
       <!-- Career Journey & Enterprise Heritage (Narrative Stream / Milestone Timeline) -->
-      <section class="editorial-journey-section" id="profileExperienceSection">
+      <section class="editorial-journey-section reveal-on-scroll" id="profileExperienceSection">
         <div class="editorial-section-header">
           <span class="section-tag-sm">ENTERPRISE HERITAGE &amp; PROVEN TRACK RECORD</span>
           <h2 class="editorial-section-title" id="experienceHeading">Companies &amp; Business Experience</h2>
@@ -155,7 +181,7 @@
         </div>
 
         <!-- Strategic Ecosystem Synthesis Banner -->
-        <div class="editorial-ecosystem-callout" id="experienceSummaryCard">
+        <div class="editorial-ecosystem-callout reveal-on-scroll" id="experienceSummaryCard">
           <div class="ecosystem-callout-inner">
             <div class="ecosystem-callout-icon">
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -519,6 +545,7 @@
       }
     });
   </script>
+  <script src="js/main.js?v=4.8"></script>
 </body>
 
 </html>

@@ -83,8 +83,9 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('scroll', updateActiveNav, { passive: true });
   updateActiveNav();
 
-  // 2. Mobile Menu Navigation Toggle & Overlay Handler
+  // 2. Mobile Slider Drawer Navigation Toggle & Overlay Handler
   const mobileToggle = document.getElementById('mobileToggle');
+  const mobileDrawerClose = document.getElementById('mobileDrawerClose');
   const navMenu = document.getElementById('navMenu');
   const navOverlay = document.getElementById('navOverlay');
 
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', () => {
     navMenu.classList.add('active');
     if (navOverlay) navOverlay.classList.add('active');
     if (mobileToggle) {
-      mobileToggle.innerHTML = '✕';
+      mobileToggle.classList.add('active');
       mobileToggle.setAttribute('aria-expanded', 'true');
     }
     document.body.classList.add('menu-open');
@@ -104,14 +105,15 @@ document.addEventListener('DOMContentLoaded', () => {
     navMenu.classList.remove('active');
     if (navOverlay) navOverlay.classList.remove('active');
     if (mobileToggle) {
-      mobileToggle.innerHTML = '☰';
+      mobileToggle.classList.remove('active');
       mobileToggle.setAttribute('aria-expanded', 'false');
     }
     document.body.classList.remove('menu-open');
   }
 
   if (mobileToggle && navMenu) {
-    mobileToggle.addEventListener('click', () => {
+    mobileToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
       if (navMenu.classList.contains('active')) {
         closeMenu();
       } else {
@@ -119,14 +121,36 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    if (mobileDrawerClose) {
+      mobileDrawerClose.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeMenu();
+      });
+    }
+
     if (navOverlay) {
       navOverlay.addEventListener('click', closeMenu);
     }
 
-    // Close menu when clicking nav links
-    navLinks.forEach(link => {
-      link.addEventListener('click', () => {
+    // Close menu when clicking ANY link or button inside the nav menu (including "Partner With Us")
+    const allDrawerLinks = navMenu.querySelectorAll('a');
+    allDrawerLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        const href = link.getAttribute('href');
         closeMenu();
+
+        if (href && href.startsWith('#') && href.length > 1) {
+          const targetEl = document.querySelector(href);
+          if (targetEl) {
+            e.preventDefault();
+            const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
+            const targetPosition = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+            window.scrollTo({
+              top: targetPosition,
+              behavior: 'smooth'
+            });
+          }
+        }
       });
     });
 
@@ -136,6 +160,27 @@ document.addEventListener('DOMContentLoaded', () => {
         closeMenu();
       }
     });
+
+    // Touch Swipe-Up-to-Close Gesture for Top-to-Down Slider (Mobile Friendly)
+    let touchStartX = 0;
+    let touchStartY = 0;
+
+    navMenu.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    navMenu.addEventListener('touchend', (e) => {
+      const touchEndX = e.changedTouches[0].screenX;
+      const touchEndY = e.changedTouches[0].screenY;
+      const diffX = Math.abs(touchEndX - touchStartX);
+      const diffY = touchEndY - touchStartY;
+
+      // Swiped upwards by more than 40px
+      if (diffY < -40 && diffX < 80) {
+        closeMenu();
+      }
+    }, { passive: true });
   }
 
   // 3. Stats Counter Animation on Scroll
@@ -330,5 +375,23 @@ document.addEventListener('DOMContentLoaded', () => {
         initPosition();
       }
     });
+  }
+
+  // 6. Scroll Reveal Observer for Sections & Cards After Hero
+  const revealElements = document.querySelectorAll('.reveal-on-scroll');
+  if (revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-revealed');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -30px 0px'
+    });
+
+    revealElements.forEach(el => revealObserver.observe(el));
   }
 });

@@ -21,7 +21,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=8.0">
+  <link rel="stylesheet" href="css/styles.css?v=10.4">
 </head>
 
 <body class="is-loading">
@@ -52,19 +52,45 @@
 
       <nav>
         <ul class="nav-menu" id="navMenu">
-          <li><a href="#home" class="nav-link active" data-text="Home"><span>Home</span></a></li>
-          <li><a href="#portfolio" class="nav-link" data-text="Businesses"><span>Businesses</span></a></li>
-          <li><a href="#leadership" class="nav-link" data-text="Leadership"><span>Leadership</span></a></li>
-          <li><a href="#about" class="nav-link" data-text="About Us"><span>About Us</span></a></li>
-          <li><a href="#contact" class="nav-link" data-text="Contact"><span>Contact</span></a></li>
+          <li class="mobile-drawer-header">
+            <div class="mobile-drawer-brand">
+              <img src="assets/83 logo (4).png" alt="83 Ventures" class="mobile-drawer-logo">
+            </div>
+            <button class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Close Menu">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </li>
+          <li class="nav-item"><a href="#home" class="nav-link active" data-text="Home"><span>Home</span></a></li>
+          <li class="nav-item"><a href="#portfolio" class="nav-link" data-text="Businesses"><span>Businesses</span></a></li>
+          <li class="nav-item"><a href="#leadership" class="nav-link" data-text="Leadership"><span>Leadership</span></a></li>
+          <li class="nav-item"><a href="#about" class="nav-link" data-text="About Us"><span>About Us</span></a></li>
+          <li class="nav-item"><a href="#contact" class="nav-link" data-text="Contact"><span>Contact</span></a></li>
+          <li class="mobile-drawer-footer">
+            <a href="#contact" class="btn btn-navy mobile-drawer-partner-btn">
+              <span class="btn-text" data-text="Partner With Us >"><span>Partner With Us &gt;</span></span>
+            </a>
+            <div class="mobile-drawer-tagline">
+              <span>Capitalized for Vision.</span>
+              <span>Engineered for Scale.</span>
+            </div>
+          </li>
         </ul>
       </nav>
 
-      <div style="display: flex; align-items: center; gap: 16px;">
+      <div class="header-actions">
         <a href="#contact" class="btn btn-navy" id="headerPartnerBtn">
           <span class="btn-text" data-text="Partner With Us >"><span>Partner With Us &gt;</span></span>
         </a>
-        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation">☰</button>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation" aria-expanded="false">
+          <span class="hamburger-box">
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+            <span class="hamburger-bar"></span>
+          </span>
+        </button>
       </div>
     </div>
   </header>
@@ -183,7 +209,7 @@
     <section class="portfolio-section" id="portfolio">
       <div class="container">
         <!-- Section Header -->
-        <div class="portfolio-header">
+        <div class="portfolio-header reveal-on-scroll">
           <div class="portfolio-header-content">
             <span class="section-tag-sm">OUR PORTFOLIO</span>
             <h2 class="section-title">Businesses We Build &amp; Back.</h2>
@@ -195,7 +221,7 @@
         <!-- Portfolio Cards Grid -->
         <div class="portfolio-cards-grid">
           <!-- Card 1: ReeferON -->
-          <div class="portfolio-card-design2 theme-reeferon">
+          <div class="portfolio-card-design2 theme-reeferon reveal-on-scroll">
             <div class="portfolio-card-media">
               <img src="assets/reeferon.jpg" alt="ReeferON Cold Chain Logistics">
             </div>
@@ -226,7 +252,7 @@
           </div>
 
           <!-- Card 2: Ten Food -->
-          <div class="portfolio-card-design2 theme-tenfoods">
+          <div class="portfolio-card-design2 theme-tenfoods reveal-on-scroll">
             <div class="portfolio-card-media">
               <img src="assets/ten_foods.jpg" alt="Ten Food Staples">
             </div>
@@ -256,7 +282,7 @@
           </div>
 
           <!-- Card 3: PAR 360 -->
-          <div class="portfolio-card-design2 theme-par360">
+          <div class="portfolio-card-design2 theme-par360 reveal-on-scroll">
             <div class="portfolio-card-media">
               <img src="assets/par360.jpg" alt="PAR 360 Integrated Supply Chain">
             </div>
@@ -289,7 +315,7 @@
     </section>
 
     <!-- Our Impact Counter Bar (#19342E Dark Green Banner) -->
-    <section class="impact-banner-section">
+    <section class="impact-banner-section reveal-on-scroll">
       <div class="container">
         <div class="impact-grid">
           <div class="impact-title-col">
@@ -370,7 +396,7 @@
     <!-- Leadership Section -->
     <section class="leadership-section" id="leadership">
       <div class="container">
-        <div class="header-flex-row" style="margin-bottom: 36px;">
+        <div class="header-flex-row reveal-on-scroll" style="margin-bottom: 36px;">
           <div>
             <span class="section-tag-sm">LEADERSHIP</span>
             <h2 class="section-title">The People Behind Eighty Three.</h2>
@@ -381,7 +407,7 @@
 
         <div class="leadership-grid">
           <!-- Profile 1: Prakash Ghagare -->
-          <div class="leadership-card">
+          <div class="leadership-card reveal-on-scroll">
             <div class="leadership-card-top">
               <div class="leadership-photo-wrap">
                 <img src="assets/prakash ghagare.png" alt="Prakash Ghagare" class="leadership-card-img">
@@ -428,7 +454,7 @@
           </div>
 
           <!-- Profile 2: Abhilash Amula -->
-          <div class="leadership-card">
+          <div class="leadership-card reveal-on-scroll">
             <div class="leadership-card-top">
               <div class="leadership-photo-wrap">
                 <img src="assets/abhilash_amula.jpg" alt="Abhilash Raju Amula" class="leadership-card-img">
@@ -480,7 +506,7 @@
     <!-- Companies Our Team Has Worked With In The Past (Enterprise Heritage) -->
     <section class="past-companies-section" id="past-companies">
       <div class="container">
-        <div class="past-companies-header">
+        <div class="past-companies-header reveal-on-scroll">
           <span class="section-tag-sm">ENTERPRISE HERITAGE &amp; PROVEN TRACK RECORD</span>
           <h2 class="section-title">Companies Our Team Has Worked With In The Past</h2>
           <p class="section-subtitle" style="margin-bottom: 0;">
@@ -489,7 +515,7 @@
           </p>
         </div>
 
-        <div class="past-companies-marquee-wrap">
+        <div class="past-companies-marquee-wrap reveal-on-scroll">
           <div class="past-companies-track">
             <!-- ===== SET 1 (REAL BRAND LOGOS) ===== -->
             <!-- 1. CHEP -->
@@ -603,7 +629,7 @@
     <section class="about-section" id="about">
       <div class="container">
         <!-- Section Header -->
-        <div class="about-editorial-header">
+        <div class="about-editorial-header reveal-on-scroll">
           <span class="section-tag-sm"
             style="font-weight: 700; letter-spacing: 1.5px; display: inline-block; margin-bottom: 12px;">ABOUT EIGHTY
             THREE</span>
@@ -612,7 +638,7 @@
 
         <!-- Editorial Paragraphs Grid -->
         <div class="about-editorial-columns">
-          <div class="about-editorial-col-left">
+          <div class="about-editorial-col-left reveal-on-scroll">
             <p class="about-lead-paragraph">
               <strong>Eighty Three Ventures</strong> is an operator-led investment and venture-building platform. We
               architect, strengthen, and scale high-impact businesses across India’s rapidly modernizing supply chain,
@@ -626,7 +652,7 @@
             </p>
           </div>
 
-          <div class="about-editorial-col-right">
+          <div class="about-editorial-col-right reveal-on-scroll">
             <p class="about-text-paragraph">
               Our model is anchored in <strong>cross-venture synergy</strong>. Rather than operating in silos, our
               businesses—from temperature-controlled logistics and intelligent contract warehousing to modern staple
@@ -657,7 +683,7 @@
     <section class="cta-banner-section" id="contact">
       <div class="container">
         <div class="cta-direct-grid">
-          <div class="cta-direct-left">
+          <div class="cta-direct-left reveal-on-scroll">
             <span class="section-tag-sm"
               style="font-weight: 700; letter-spacing: 1.5px; display: inline-block; margin-bottom: 12px;">PARTNER WITH
               US</span>
@@ -710,7 +736,7 @@
               </div>
             </div>
           </div>
-          <div class="cta-direct-right">
+          <div class="cta-direct-right reveal-on-scroll">
             <div class="cta-location-card">
               <div class="cta-map-wrapper">
                 <iframe
@@ -851,7 +877,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=3.0"></script>
+  <script src="js/main.js?v=4.8"></script>
 </body>
 
 </html>

@@ -1632,7 +1632,7 @@ body.page-loaded .pillar-item:nth-child(4) { animation-delay: 1.01s; }
   align-items: center;
   gap: 56px;
   width: max-content;
-  animation: pastCompaniesMarquee 34s linear infinite;
+  animation: pastCompaniesMarquee 24s linear infinite;
 }
 
 .past-companies-marquee-wrap:hover .past-companies-track {
@@ -1677,6 +1677,37 @@ body.page-loaded .pillar-item:nth-child(4) { animation-delay: 1.01s; }
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
+.logo-marquee-item:has(.company-logo-wide) {
+  min-width: 190px;
+}
+
+.logo-marquee-item img.company-logo-wide {
+  max-width: 176px;
+  height: 40px;
+  max-height: 40px;
+}
+
+.logo-marquee-item img.company-logo-tall {
+  height: 52px;
+  max-height: 52px;
+  max-width: 52px;
+}
+
+.logo-marquee-item img.company-logo-mark {
+  height: 52px;
+  max-height: 52px;
+  max-width: 56px;
+}
+
+.logo-marquee-item img.company-logo-round {
+  height: 48px;
+  max-height: 48px;
+  width: 48px;
+  max-width: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
 .logo-marquee-item:hover {
   opacity: 1;
   transform: translateY(-3px) scale(1.04);
@@ -1705,6 +1736,30 @@ body.page-loaded .pillar-item:nth-child(4) { animation-delay: 1.01s; }
     height: 28px;
     max-height: 28px;
     max-width: 110px;
+  }
+
+  .logo-marquee-item:has(.company-logo-wide) {
+    min-width: 150px;
+  }
+
+  .logo-marquee-item img.company-logo-wide {
+    max-width: 136px;
+    height: 32px;
+    max-height: 32px;
+  }
+
+  .logo-marquee-item img.company-logo-tall,
+  .logo-marquee-item img.company-logo-mark {
+    height: 40px;
+    max-height: 40px;
+    max-width: 44px;
+  }
+
+  .logo-marquee-item img.company-logo-round {
+    height: 40px;
+    max-height: 40px;
+    width: 40px;
+    max-width: 40px;
   }
 }
 

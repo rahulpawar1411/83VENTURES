@@ -46,7 +46,7 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=11.7">
+  <link rel="stylesheet" href="css/styles.css?v=11.8">
 
   <script type="application/ld+json">
   {
@@ -425,7 +425,7 @@
       },
       'abhilash-amula': {
         name: 'Abhilash Raju Amula',
-        role: 'Founder & CEO (ReeferON) • Co-Founder (PropelPad) • Director',
+        role: 'Co-Founder\nCEO & Founder, ReeferON',
         badge: 'EXECUTIVE FEATURE',
         location: 'Thane, MH • India',
         affiliations: '83 Ventures • ReeferON • PropelPad • PAR 360',
@@ -504,7 +504,7 @@
 
       // Populate text & details
       document.getElementById('profileName').innerText = data.name;
-      document.getElementById('profileRole').innerText = data.role;
+      document.getElementById('profileRole').innerHTML = String(data.role || '').replace(/\n/g, '<br>');
       if (document.getElementById('profileAffiliations')) document.getElementById('profileAffiliations').innerText = data.affiliations || '83 Ventures • ReeferON • PropelPad • PAR 360';
 
       document.getElementById('profileImage').src = data.image;

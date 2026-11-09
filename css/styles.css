@@ -1505,7 +1505,15 @@ body.page-loaded .pillar-item:nth-child(4) { animation-delay: 1.01s; }
   font-weight: 700;
   color: var(--text-subtle);
   margin-bottom: 14px;
-  line-height: 1.4;
+  line-height: 1.45;
+}
+
+.leadership-role-sub {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text-muted);
 }
 
 .leadership-bio {
@@ -6856,13 +6864,16 @@ body.menu-open {
 
 .editorial-role-tag {
   display: inline-flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
   font-size: 0.84rem;
   font-weight: 600;
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: var(--navy-btn);
   background: transparent;
+  line-height: 1.4;
   border: none;
   padding: 0;
   border-radius: 0;

@@ -3,67 +3,65 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // 0. Site Preloader — show on load + every menu / page change
+  // 0. Site Preloader — full welcome only on first/fresh visit (not every menu click)
   const preloader = document.getElementById('sitePreloader');
   const MIN_PRELOADER_MS = 1100;
+  const NAV_SKIP_KEY = '83v-skip-preloader';
+  const cameFromInternalNav = sessionStorage.getItem(NAV_SKIP_KEY) === '1';
 
-  function showPageLoader() {
-    if (!preloader) return;
-    preloader.style.display = 'flex';
-    preloader.classList.remove('fade-out');
-    // Restart line animation
-    const fill = preloader.querySelector('.preloader-line-fill');
-    if (fill) {
-      fill.style.animation = 'none';
-      // force reflow
-      void fill.offsetWidth;
-      fill.style.animation = '';
-    }
-    document.body.classList.add('is-loading');
-    document.body.classList.remove('page-loaded', 'menu-open');
-    window.scrollTo(0, 0);
+  if (cameFromInternalNav) {
+    sessionStorage.removeItem(NAV_SKIP_KEY);
   }
 
-  function hidePageLoader() {
+  function hidePageLoader(immediate) {
     if (!preloader) {
       document.body.classList.remove('is-loading');
       document.body.classList.add('page-loaded');
       return;
     }
-    preloader.classList.add('fade-out');
     document.body.classList.remove('is-loading');
     document.body.classList.add('page-loaded');
+    if (immediate) {
+      preloader.classList.add('fade-out');
+      preloader.style.display = 'none';
+      return;
+    }
+    preloader.classList.add('fade-out');
     setTimeout(() => {
       if (preloader.parentNode) preloader.style.display = 'none';
     }, 700);
   }
 
   if (preloader) {
-    document.body.classList.add('is-loading');
-    window.scrollTo(0, 0);
-    const startTime = Date.now();
-
-    function dismissPreloader() {
-      const remaining = Math.max(0, MIN_PRELOADER_MS - (Date.now() - startTime));
-      setTimeout(hidePageLoader, remaining);
-    }
-
-    if (document.readyState === 'complete') {
-      dismissPreloader();
+    if (cameFromInternalNav) {
+      // Menu / internal page change — skip logo welcome screen
+      hidePageLoader(true);
     } else {
-      window.addEventListener('load', dismissPreloader);
-      setTimeout(dismissPreloader, 2800);
+      document.body.classList.add('is-loading');
+      window.scrollTo(0, 0);
+      const startTime = Date.now();
+
+      function dismissPreloader() {
+        const remaining = Math.max(0, MIN_PRELOADER_MS - (Date.now() - startTime));
+        setTimeout(() => hidePageLoader(false), remaining);
+      }
+
+      if (document.readyState === 'complete') {
+        dismissPreloader();
+      } else {
+        window.addEventListener('load', dismissPreloader);
+        setTimeout(dismissPreloader, 2800);
+      }
     }
   } else {
     document.body.classList.remove('is-loading');
     document.body.classList.add('page-loaded');
   }
 
-  // Show loader again when returning via browser back/forward cache
+  // Back/forward cache: don't replay welcome loader
   window.addEventListener('pageshow', (event) => {
-    if (event.persisted && preloader) {
-      showPageLoader();
-      setTimeout(hidePageLoader, MIN_PRELOADER_MS);
+    if (event.persisted) {
+      hidePageLoader(true);
     }
   });
 
@@ -106,40 +104,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (!filePart || filePart === current || (filePart === 'index.html' && (current === '' || current === 'index.html'))) {
       if (hashPart) return { type: 'hash', hash: hashPart };
-      // Same page, no hash — still show loader briefly then stay
       return { type: 'reload', href: trimmed };
     }
 
     return { type: 'page', href: trimmed };
   }
 
-  function goWithLoader(target) {
-    showPageLoader();
+  function scrollToHash(hash) {
+    const el = document.querySelector(hash);
+    if (!el) return;
+    const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+    window.scrollTo({ top, behavior: 'smooth' });
+    if (history.pushState) {
+      history.pushState(null, '', hash);
+    }
+  }
 
+  function goInternal(target) {
+    // Page change: mark next page to skip welcome loader (avoids double logo load)
     if (target.type === 'page' || target.type === 'reload') {
-      setTimeout(() => {
-        window.location.href = target.href;
-      }, 280);
+      sessionStorage.setItem(NAV_SKIP_KEY, '1');
+      window.location.href = target.href;
       return;
     }
 
     if (target.type === 'hash') {
-      setTimeout(() => {
-        hidePageLoader();
-        const el = document.querySelector(target.hash);
-        if (el) {
-          const headerHeight = document.querySelector('.header')?.offsetHeight || 70;
-          const top = el.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-          window.scrollTo({ top, behavior: 'smooth' });
-          if (history.pushState) {
-            history.pushState(null, '', target.hash);
-          }
-        }
-      }, MIN_PRELOADER_MS);
+      scrollToHash(target.hash);
     }
   }
 
-  // Intercept menu + internal site links for loading transition
+  // Intercept menu + internal site links — no double preloader
   document.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     if (!link) return;
@@ -159,12 +154,12 @@ document.addEventListener('DOMContentLoaded', () => {
       link.classList.contains('mobile-drawer-partner-btn')
     );
 
-    // Always loader when leaving to another HTML page; hash menus only from header/footer nav
+    // Same-page hash / reload intercept only from header/footer nav
     if (nav.type === 'hash' && !inChrome) return;
     if (nav.type === 'reload' && !inChrome) return;
 
     e.preventDefault();
-    goWithLoader(nav);
+    goInternal(nav);
   }, true);
 
   // 1. Header Scroll Effect & Active Nav Link Highlight (ScrollSpy)

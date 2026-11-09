@@ -3,14 +3,47 @@
 
 <head>
   <meta charset="UTF-8">
+  <script>
+    try {
+      if (sessionStorage.getItem('83v-skip-preloader') === '1') {
+        document.documentElement.classList.add('skip-preloader');
+      }
+    } catch (e) {}
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>83VENTURES</title>
+  <title>83VENTURES | Investment Firm &amp; Venture Building Platform in India</title>
   <meta name="description"
-    content="83VENTURES is a strategic investment and business platform partnering with ambitious founders, businesses and entrepreneurs to build, strengthen and scale high-potential ventures.">
+    content="Eighty Three Ventures (83VENTURES) is an operator-led investment firm and venture building platform in India. We partner with founders to fund, build and scale supply chain, cold chain, logistics and consumer businesses.">
+  <meta name="keywords"
+    content="83VENTURES, Eighty Three Ventures, investment firm India, venture capital India, venture building platform, startup funding India, supply chain investment, cold chain investment, business partner Thane, operator led capital">
+  <meta name="author" content="Eighty Three Ventures">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta name="googlebot" content="index, follow">
+  <meta name="theme-color" content="#0B1F3A">
+  <link rel="canonical" href="https://83ventures.in/">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="83VENTURES">
+  <meta property="og:locale" content="en_IN">
+  <meta property="og:title" content="83VENTURES | Investment Firm &amp; Venture Building Platform in India">
+  <meta property="og:description"
+    content="Operator-led investment and venture building platform partnering with founders to build and scale high-potential businesses across India.">
+  <meta property="og:url" content="https://83ventures.in/">
+  <meta property="og:image" content="https://83ventures.in/assets/hero%20img2.jpg">
+  <meta property="og:image:alt" content="Eighty Three Ventures strategic investment platform">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="83VENTURES | Investment Firm &amp; Venture Building Platform in India">
+  <meta name="twitter:description"
+    content="Operator-led investment and venture building platform partnering with founders to build and scale high-potential businesses across India.">
+  <meta name="twitter:image" content="https://83ventures.in/assets/hero%20img2.jpg">
 
   <!-- Favicon -->
   <link rel="icon" href="assets/favicon.ico">
   <link rel="shortcut icon" href="assets/favicon.ico">
+  <link rel="apple-touch-icon" href="assets/83%20logo%20(4).png">
 
   <!-- Google Fonts & Stylesheet -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -18,7 +51,83 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/styles.css?v=11.2">
+  <link rel="stylesheet" href="css/styles.css?v=11.7">
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://83ventures.in/#organization",
+        "name": "Eighty Three Ventures",
+        "alternateName": ["83VENTURES", "83 Ventures", "Eighty Three Ventures India"],
+        "url": "https://83ventures.in/",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://83ventures.in/assets/83%20logo%20(4).png"
+        },
+        "image": "https://83ventures.in/assets/hero%20img2.jpg",
+        "email": "connect@83ventures.in",
+        "description": "Operator-led investment firm and venture building platform partnering with founders to build, strengthen and scale high-potential ventures across India's supply chain and consumer economy.",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Thane, Maharashtra, India"
+        },
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Chirag Infotech, Office No. 605, Wagle Industrial Estate",
+          "addressLocality": "Thane",
+          "addressRegion": "Maharashtra",
+          "postalCode": "400604",
+          "addressCountry": "IN"
+        },
+        "areaServed": {
+          "@type": "Country",
+          "name": "India"
+        },
+        "knowsAbout": [
+          "Venture capital",
+          "Startup funding",
+          "Supply chain",
+          "Cold chain logistics",
+          "Business building",
+          "Operational expertise"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "email": "connect@83ventures.in",
+          "contactType": "business inquiries",
+          "availableLanguage": ["English", "Hindi"]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://83ventures.in/#website",
+        "url": "https://83ventures.in/",
+        "name": "83VENTURES",
+        "publisher": {
+          "@id": "https://83ventures.in/#organization"
+        },
+        "inLanguage": "en-IN"
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://83ventures.in/#webpage",
+        "url": "https://83ventures.in/",
+        "name": "83VENTURES | Investment Firm & Venture Building Platform in India",
+        "isPartOf": {
+          "@id": "https://83ventures.in/#website"
+        },
+        "about": {
+          "@id": "https://83ventures.in/#organization"
+        },
+        "description": "Eighty Three Ventures is an operator-led investment firm and venture building platform in India."
+      }
+    ]
+  }
+  </script>
 </head>
 
 <body class="is-loading">
@@ -69,6 +178,7 @@
           <li class="nav-item"><a href="#leadership" class="nav-link" data-text="Leadership"><span>Leadership</span></a>
           </li>
           <li class="nav-item"><a href="careers.html" class="nav-link" data-text="Careers"><span>Careers</span></a></li>
+          <li class="nav-item"><a href="faq.html" class="nav-link" data-text="FAQ"><span>FAQ</span></a></li>
           <li class="nav-item"><a href="#contact" class="nav-link" data-text="Contact"><span>Contact</span></a></li>
           <li class="mobile-drawer-footer">
             <a href="#contact" class="btn btn-navy mobile-drawer-partner-btn">
@@ -107,17 +217,18 @@
 
       <!-- Edge-to-Edge Full Width Right Image -->
       <div class="hero-full-media-wrap">
-        <img src="assets/hero img2.png" alt="Eighty Three Ventures Strategic Platform" class="hero-full-img">
+        <img src="assets/hero img2.jpg" alt="Eighty Three Ventures Strategic Platform" class="hero-full-img" fetchpriority="high" decoding="async">
       </div>
 
       <div class="container">
         <div class="hero-content-wrapper">
-          <div class="hero-top-tag">EIGHTY THREE VENTURES</div>
+          <div class="hero-top-tag">INVESTMENT FIRM &amp; VENTURE BUILDING PLATFORM</div>
           <h1 class="hero-headline">Capitalized for Vision. <br><span class="accent-gold">Engineered for Scale.</span>
           </h1>
           <p class="hero-subheadline">
-            Eighty Three Ventures is a strategic investment and business platform partnering with ambitious founders,
-            businesses and entrepreneurs to build, strengthen and scale high-potential ventures.
+            Eighty Three Ventures (83VENTURES) is a strategic investment firm and venture building platform in India,
+            partnering with ambitious founders, businesses and entrepreneurs to fund, build, strengthen and scale
+            high-potential ventures across supply chain, cold chain, logistics and consumer commerce.
           </p>
 
           <div class="hero-cta-group">
@@ -225,7 +336,7 @@
           <!-- Card 1: ReeferON -->
           <div class="portfolio-card-design2 theme-reeferon reveal-on-scroll">
             <div class="portfolio-card-media">
-              <img src="assets/reeferon.jpg" alt="ReeferON Cold Chain Logistics">
+              <img src="assets/reeferon.jpg" alt="ReeferON Cold Chain Logistics" loading="lazy" decoding="async">
             </div>
             <div class="portfolio-card-body">
               <div class="portfolio-card-header-wrap">
@@ -257,7 +368,7 @@
           <div class="portfolio-card-design2 theme-tenfoods reveal-on-scroll">
             <!-- Cover image -->
             <div class="portfolio-card-media">
-              <img src="assets/ten_foods.jpg" alt="TEN Food Staples">
+              <img src="assets/ten_foods.jpg" alt="TEN Food Staples" loading="lazy" decoding="async">
             </div>
             <div class="portfolio-card-body">
               <!-- Brand logo: Try Eat Now (TEN) -->
@@ -288,7 +399,7 @@
           <!-- Card 3: PAR 360 -->
           <div class="portfolio-card-design2 theme-par360 reveal-on-scroll">
             <div class="portfolio-card-media">
-              <img src="assets/par360.jpg" alt="PAR 360 Integrated Supply Chain">
+              <img src="assets/par360.jpg" alt="PAR 360 Integrated Supply Chain" loading="lazy" decoding="async">
             </div>
             <div class="portfolio-card-body">
               <div class="portfolio-card-header-wrap">
@@ -414,7 +525,7 @@
           <div class="leadership-card reveal-on-scroll">
             <div class="leadership-card-top">
               <div class="leadership-photo-wrap">
-                <img src="assets/prakash ghagare.png" alt="Prakash Ghagare" class="leadership-card-img">
+                <img src="assets/prakash ghagare.jpg" alt="Prakash Ghagare" class="leadership-card-img" loading="lazy" decoding="async">
               </div>
               <div class="leadership-info">
                 <div class="leadership-info-header">
@@ -461,7 +572,7 @@
           <div class="leadership-card reveal-on-scroll">
             <div class="leadership-card-top">
               <div class="leadership-photo-wrap">
-                <img src="assets/abhilash_amula.jpg" alt="Abhilash Raju Amula" class="leadership-card-img">
+                <img src="assets/abhilash_amula.jpg" alt="Abhilash Raju Amula" class="leadership-card-img" loading="lazy" decoding="async">
               </div>
               <div class="leadership-info">
                 <div class="leadership-info-header">
@@ -757,6 +868,7 @@
             <li><a href="#portfolio">Businesses</a></li>
             <li><a href="#leadership">Leadership</a></li>
             <li><a href="careers.html">Careers</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="#contact">Contact Us</a></li>
           </ul>
         </div>
@@ -828,7 +940,7 @@
     </div>
   </footer>
 
-  <script src="js/main.js?v=5.0"></script>
+  <script src="js/main.js?v=5.1"></script>
 </body>
 
 </html>
